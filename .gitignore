@@ -1,0 +1,9 @@
+*.prefs
+*.class
+*.iml
+*.project
+*.classpath
+*.docx
+*.pdf
+.idea
+*.odt
