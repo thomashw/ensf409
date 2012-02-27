@@ -7,3 +7,5 @@
 *.pdf
 .idea
 *.odt
+*.metadata
+bin
