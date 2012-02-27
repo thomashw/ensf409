@@ -18,11 +18,19 @@ public class ReadRecord
 		 *       - IOException
 		 * 5. etc...
 		 */
-		private void getRecords(String name) throws IOException, ClassNotFoundException, FileNotFoundException
+		private void getRecords(String name)
 		{
 			checkPath(name);
 			
-			openFile(name);
+			try {
+				openFile(name);
+			} catch( FileNotFoundException e ) {
+				System.out.println( e );
+				return;
+			} catch ( IOException e ) {
+				System.out.println( e );
+				return;
+			}
 			
 			// Don't know how to to end the while loop when it hits the end of the file
 			// Just have a "break" at the bottom, only reads one record
@@ -34,12 +42,23 @@ public class ReadRecord
 					record = (MusicRecord)input.readObject();
 				} catch( EOFException e ) {
 					break;
+				} catch( IOException e ) {
+					System.out.println( e );
+					return;
+				} catch( ClassNotFoundException e ) {
+					System.out.println( e );
+					return;
 				}
 
 				System.out.println( recordToString( record ) );
 			}
 			
-			input.close();			
+			try {
+				input.close();			
+			} catch( IOException e ) {
+				System.out.println( e );
+				return;
+			}
 		}
 
 		public String recordToString( MusicRecord record )
