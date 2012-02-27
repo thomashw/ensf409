@@ -15,14 +15,13 @@ public class WriteRecord {
 		File f = new File( path );
 
 		if( f.exists() )
-		System.out.println( "File exists." );
+			System.out.println( "File exists." );
 
 		if( f.isFile() )
-		System.out.println( "This is a file." );
+			System.out.println( "This is a file." );
 		else if( f.isDirectory() )
-		System.out.println( "This is a directory." );
+			System.out.println( "This is a directory." );
 	}		 
-
 	
 	/* Method openFile opens with the given name for object serialization. 
 	* From Java API find out about the possible exceptions and catach them, with
@@ -77,7 +76,6 @@ public class WriteRecord {
 	{
 		output.close();
 	} // end method closeFile
-	
 	
 	public static void main(String [] args) throws IOException
 	{
