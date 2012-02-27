@@ -1,10 +1,10 @@
 // ReadRecord.java
 
-
 public class ReadRecord
 	{
 
 		/* This method deserializes records (objects) in the given file, 'name':
+		 * 
 		 * 1. It opens a file for deserialization. and catches the possible 
 		 *    exceptions refer to the Java API.
 		 * 2. uses a while loop to read the music records. The funciton to read
