@@ -1,9 +1,9 @@
 import java.io.*;
 
 public class ReadRecord
-	{
-		ObjectInputStream input;
-		
+{
+	ObjectInputStream input;
+
 		/* This method deserializes records (objects) in the given file, 'name':
 		 * 
 		 * 1. It opens a file for deserialization. and catches the possible 
@@ -18,57 +18,36 @@ public class ReadRecord
 		 *       - IOException
 		 * 5. etc...
 		 */
-		private void getRecords(String name)
+		private void getRecords(String name) throws IOException, ClassNotFoundException, FileNotFoundException
 		{
 			checkPath(name);
 			
-			try{ 
-				openFile(name);
-			}
-			catch( FileNotFoundException e ) {
-				System.out.println( e );
-			}
-			catch( IOException e ) {
-				System.out.println( e );
-			}
+			openFile(name);
 			
 			// Don't know how to to end the while loop when it hits the end of the file
 			// Just have a "break" at the bottom, only reads one record
 			// ** Get a java.io.EOFException when I run **
+			MusicRecord record = null;
 			while(true)
 			{
-				MusicRecord record = new MusicRecord();
-				
 				try {
-					record.setYear( input.readInt() );
-					System.out.println( record.getYear() );
-					
-					record.setSongName( input.readUTF() );
-					System.out.println( record.getSongName() );
-					
-					record.setSingerName( input.readUTF() );
-					System.out.println( record.getSingerName() );
-					
-					record.setPrice( input.readDouble() );
-					System.out.println( record.getPurchasePrice() );
+					record = (MusicRecord)input.readObject();
+				} catch( EOFException e ) {
+					break;
 				}
-				catch( EOFException e ) {
-					System.out.println( e );
-				}
-				catch( IOException e ) {
-					System.out.println( e );
-				}
-				
-				break;
+
+				System.out.println( recordToString( record ) );
 			}
 			
-			try {
-				input.close();
-			}
-			catch( IOException e ) {
-				System.out.println( e );
-			}
-			
+			input.close();			
+		}
+
+		public String recordToString( MusicRecord record )
+		{
+			return "\nYear recorded: " + record.getYear() + 
+			"\nSong name: " + record.getSongName() + 
+			"\nSinger name: " + record.getSingerName() + 
+			"\nPurchase price: " + record.getPurchasePrice();
 		} 
 		
 		public void checkPath(String path)
@@ -90,10 +69,10 @@ public class ReadRecord
 		}
 		
 		// main begin
-		public static void main(String [] args)
+		public static void main(String [] args) throws IOException, ClassNotFoundException, FileNotFoundException
 		{
 			ReadRecord d = new ReadRecord();
-			d.getRecords("mySongs.ser");
+			d.getRecords("../../Part I/mySongs.ser");
 		}
 		// main end
 	}
