@@ -2,7 +2,6 @@
  * BinSearchTree.java
  * Created on March 9, 2008, 9:56 AM
  */
-import java.util.*;
 import java.io.*;
 import javax.swing.JOptionPane;
 
