@@ -13,21 +13,30 @@ public class BinarySearchMangerFrame extends JApplet {
 	private InsertNodeFrame ins;
 	private Container c;
 
-	private void initComponents() // define
+	private void initComponents()
 	{
-		
+		bst = new BinSearchTree();
+
+		ins = new InsertNodeFrame(bst); 
+		buttonsPanel = new JPanel(); 
+		insertButton = new JButton("Insert"); 
+		screenPanel = new JScrollPane(); 
+		outputScreen = new JTextArea(); 
+		outputScreen.setEditable(false);
 	}
 	
 
 	public BinarySearchMangerFrame () 
 	{
+		initComponents();
+		
 		// create an empty tree
 		bst = new BinSearchTree();
 		
 		// create and initialize the components
 		ins = new InsertNodeFrame(bst); 
 		buttonsPanel = new JPanel(); 
-		insertButton = new JButton(“Insert”); 
+		insertButton = new JButton("Insert"); 
 		screenPanel = new JScrollPane(); 
 		outputScreen = new JTextArea(); 
 		outputScreen.setEditable(false);
