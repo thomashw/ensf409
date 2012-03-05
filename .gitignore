@@ -10,3 +10,6 @@
 *.metadata
 bin
 *.ser
+*.cproject
+Debug
+*.mk
