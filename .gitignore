@@ -14,3 +14,5 @@ bin
 Debug
 *.mk
 *.xcworkspace
+Lab 7/Exercise 2/myprog
+*.o
