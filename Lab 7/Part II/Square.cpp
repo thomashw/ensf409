@@ -8,9 +8,9 @@ using namespace std;
 
 void Square::f() {}
 
-Square::Square(char* name, double x, double y, double side) : Shape(name,x,y)
+Square::Square(char* name, double x, double y, double sideA) : Shape(name,x,y)
 {
-	side_a = side;
+	side_a = sideA;
 }
 
 double Square::area()
