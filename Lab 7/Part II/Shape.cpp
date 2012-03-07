@@ -52,12 +52,12 @@ void Shape::display()
 	origin.display();
 }
 
-double Shape::distance(Shape s)
+double Shape::distance(Shape& s)
 {
 	return origin.distance(s.getOrigin());
 }
 
-double Shape::distance(Shape s1, Shape s2)
+double Shape::distance(Shape& s1, Shape& s2)
 {
 	return Point::distance(s1.getOrigin(), s2.getOrigin());
 }

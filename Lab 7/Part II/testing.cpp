@@ -3,6 +3,7 @@ using namespace std;
 
 #include "Point.h"
 #include "Shape.h"
+#include "Square.h"
 
 int main( void )
 {
@@ -27,13 +28,15 @@ int main( void )
 	p.display();
 	q.display();
 
-	// Testing Shape
-
-	Shape s("Steve", 1, 5);
+	// Testing Square
+	Square s( "Steve", 2, 9, 3);
 	s.display();
-	Shape t("Bob", 4, 10);
+	Square t("Bob", 1, 1, 5);
 	t.display();
-	cout << "Distance is: " << s.distance(t) << "\n";	
+
+	cout << "Distance is: " << s.distance(t) << "\n";
+	cout << "The Area is: " << s.area() << "\n";
+	cout << "The perimeter is: " << s.perimeter() << "\n";
 
 	cout << ".. Done Testing.\n\n";
 }
