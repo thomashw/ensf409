@@ -10,6 +10,9 @@ class Point
 		void setX(double x);
 		void setY(double y);
 		int getID();
+		static int counter();
+		double distance(Point p);
+		static double distance(Point p1, Point p2);
 
 	private:
 		static int numPoints;

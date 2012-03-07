@@ -2,6 +2,7 @@
 using namespace std;
 
 #include "Point.h"
+#include "math.h"
 
 Point::Point(double x, double y)
 {
@@ -35,4 +36,19 @@ void Point::setY(double y)
 int Point::getID()
 {
 	return id;
+}
+
+int Point::counter()
+{
+	return numPoints;
+}
+
+double Point::distance(Point p)
+{
+	return sqrt( pow( xCor - p.getX(), 2) + pow( yCor - p.getY() ,2) );
+}
+
+double distance(Point p1, Point p2)
+{
+	return sqrt( pow( p1.getX() - p2.getX(), 2) + pow( p2.getY() - p2.getY() , 2) );
 }

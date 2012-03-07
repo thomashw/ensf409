@@ -19,6 +19,10 @@ int main( void )
 	cout << "Y is: " << q.getY() << "\n";
 	cout << "ID is: " << q.getID() << "\n";
 
-	cout << ".. Done Testing.\n";
+	cout << "Distance is: " << p.distance( q ) << "\n";
 
+	cout << p.counter() << "\n";
+	cout << q.counter() << "\n";
+
+	cout << ".. Done Testing.\n";
 }
