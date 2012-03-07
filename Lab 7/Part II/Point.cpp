@@ -48,7 +48,13 @@ double Point::distance(Point p)
 	return sqrt( pow( xCor - p.getX(), 2) + pow( yCor - p.getY() ,2) );
 }
 
-double distance(Point p1, Point p2)
+double Point::distance(Point p1, Point p2)
 {
 	return sqrt( pow( p1.getX() - p2.getX(), 2) + pow( p2.getY() - p2.getY() , 2) );
+}
+
+void Point::display()
+{
+	cout << "X-coordinate: " << xCor << "\n";
+	cout << "Y-coordinate: " << yCor << "\n";
 }

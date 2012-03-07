@@ -13,6 +13,7 @@ class Point
 		static int counter();
 		double distance(Point p);
 		static double distance(Point p1, Point p2);
+		void display();
 
 	private:
 		static int numPoints;

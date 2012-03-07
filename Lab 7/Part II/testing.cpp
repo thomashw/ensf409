@@ -5,7 +5,7 @@ using namespace std;
 
 int main( void )
 {
-	cout << "Testing..\n";
+	cout << "\nTesting..\n";
 
 	Point p( 3, 4 );
 
@@ -19,10 +19,11 @@ int main( void )
 	cout << "Y is: " << q.getY() << "\n";
 	cout << "ID is: " << q.getID() << "\n";
 
-	cout << "Distance is: " << p.distance( q ) << "\n";
+	cout << "Distance is: " << p.distance(q) << "\n";
+	cout << "Number of Points is: " << p.counter() << "\n";
 
-	cout << p.counter() << "\n";
-	cout << q.counter() << "\n";
+	p.display();
+	q.display();
 
-	cout << ".. Done Testing.\n";
+	cout << ".. Done Testing.\n\n";
 }
