@@ -11,7 +11,7 @@ class Point
 		void setY(double y);
 		int getID();
 		static int counter();
-		double distance(Point p);
+		double distance(Point p);	
 		static double distance(Point p1, Point p2);
 		void display();
 
