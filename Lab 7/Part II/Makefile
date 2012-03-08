@@ -1,8 +1,8 @@
 # File name: Makefile - Part II
 # Authors: Thomas Hewton-Waters & Andrew Winkler
 
-myprog: Point.o testing.o Shape.o Square.o Rectangle.o
-	g++ -o myprog Point.o testing.o Shape.o Square.o Rectangle.o
+myprog: Point.o main.o Shape.o Square.o Rectangle.o GraphicsWorld.o
+	g++ -o myprog Point.o main.o Shape.o Square.o Rectangle.o GraphicsWorld.o
 
 Point.o: Point.cpp Point.h
 	g++ -c Point.cpp
@@ -16,5 +16,8 @@ Square.o: Square.cpp Square.h
 Rectangle.o: Rectangle.cpp Rectangle.h
 	g++ -c Rectangle.cpp
 
-testing.o: testing.cpp
-	g++ -c testing.cpp
+GraphicsWorld.o: GraphicsWorld.cpp	GraphicsWorld.h
+	g++ -c GraphicsWorld.cpp
+
+main.o: main.cpp
+	g++ -c main.cpp
