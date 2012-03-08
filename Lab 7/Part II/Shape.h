@@ -17,7 +17,7 @@ class Shape
 		void move(double dx, double dy);
 		Shape& operator =(Shape& s);
 
-	private:
+	protected:
 		Point origin;
 		char* shapeName;
 		int lenghtName;
