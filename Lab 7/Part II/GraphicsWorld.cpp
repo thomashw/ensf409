@@ -14,46 +14,37 @@ void GraphicsWorld::run()
 	cout << "\n** Program Written by: Andrew Winkler & Thomas Hewton-Waters **\n";
 
 	// Testing Point
-	cout << "\nTesting Point:\n";
-	Point p1( 3, 4 );
-
-	cout << "X is: " << p1.getX() << "\n";
-	cout << "Y is: " << p1.getY() << "\n";
-	cout << "ID is: " << p1.getID() << "\n";
-
-	Point p2( 2, 6 );
-
-	cout << "X is: " << p2.getX() << "\n";
-	cout << "Y is: " << p2.getY() << "\n";
-	cout << "ID is: " << p2.getID() << "\n";
-
-	cout << "Distance between P1 and P2 is: " << p1.distance(p2) << "\n";
-	cout << "Number of Points is: " << p1.counter() << "\n";
-
-	p1.display();
-	p2.display();
+	cout << "\nTesting Functions in class Point:\n";
+	Point m ( 6, 8 );
+	Point n ( 6, 8 );
+	cout << "The number of points so far is: " << Point::counter() << "\n"; 
+	n.setX(9); 
+	m.display(); 
+	n.display();
+	cout << "The distance between the two points is: " << m.distance(n) << "\n";
 
 	// Testing Square
-	cout << "\nTesting Square:\n";
-	Square s1( "Steve", 2, 9, 3 );
-	s1.display();
-	Square s2( "Bob", 1, 1, 5 );
-	s2.display();
-
-	cout << "Distance between S1 and S2 is: " << s1.distance(s2) << "\n";
-	cout << "The Area is: " << s1.area() << "\n";
-	cout << "The perimeter is: " << s1.perimeter() << "\n";
+	cout << "\nTesting Functions in class Square:\n";
+	Square s( "SQUARE - S", 5, 7, 12 ); 
+	s.display();
+	cout << "The area of " << s.getName() << " is: " << s.area() << "\n"; 
+	cout << "The perimeter of " << s.getName() << " is: " << s.perimeter() << "\n";
 
 	// Testing Rectangle
-	cout << "\nTesting Rectangle:\n";	
-	Rectangle r1( "Andrew", 2, 2, 3, 5 );
-	r1.display();
-	Rectangle r2( "Thomas", 4, 4, 5, 7);
-	r2.display();
+	cout << "\nTesting Functions in class Rectangle:\n";
+	Rectangle a( "RECTANGLE A", 5, 7, 12, 15 ); 
+	a.display();
+	Rectangle b( "RECTANGLE B", 16 , 7, 8, 9 ); 
+	b.display();
+	cout << "The area of " << a.getName() << " is: " << a.area() << "\n"; 
+	cout << "The perimeter of " << a.getName() << " is: " << a.perimeter() << "\n";
+	double d = a.distance(b);
+	cout << "The distance between the two rectangles is: " << d << "\n";
 
-	cout << "Distance between R1 and R2 is: " << r1.distance(r2) << "\n";
-	cout << "The Area is: " << r1.area() << "\n";
-	cout << "The perimeter is: " << r1.perimeter() << "\n";
+	// Testing copy constructor
+	cout << "\nTesting the assignment operator in class Rectangle:\n";
+	Rectangle rec1 = a; 
+	rec1.display();
 
-	cout << ".. Done Testing.\n\n";
+	cout << "\n.. Done Testing.\n\n";
 }
