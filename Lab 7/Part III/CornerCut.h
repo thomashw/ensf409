@@ -1,6 +1,9 @@
 #ifndef CORNERCUT_H
 #define CORNERCUT_H
 
+#include "Circle.h"
+#include "CornerCut.h"
+
 class CornerCut : public Rectangle, public Circle
 {
 	public:

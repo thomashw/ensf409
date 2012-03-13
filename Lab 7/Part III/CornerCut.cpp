@@ -5,8 +5,8 @@ using namespace std;
 #include "math.h"
 #include "Point.h"
 #include "Shape.h"
-#include "Circle.h"
 #include "Rectangle.h"
+#include "Circle.h"
 #include "CornerCut.h"
 
 void CornerCut::f() {}

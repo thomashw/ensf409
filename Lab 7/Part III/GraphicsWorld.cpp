@@ -4,8 +4,8 @@ using namespace std;
 #include "Point.h"
 #include "Shape.h"
 #include "Circle.h"
-#include "CornerCut.h"
 #include "Rectangle.h"
+#include "CornerCut.h"
 #include "GraphicsWorld.h"
 
 GraphicsWorld::GraphicsWorld() {}
@@ -28,9 +28,9 @@ void GraphicsWorld::run()
 	// Testing functions in class CornerCut. 
 	CornerCut rc ( "CornerCut rc", 6, 5, 10, 12, 3 );
 	rc.display();
-	cout << "The area of " << rc.getName() << " is: " << rc.area(); 
-	cout << "The perimeter of " << rc.getName() << " is: " << rc.perimeter();
-	d = rc.distance(c);
+	cout << "The area of " << rc.getName() << " is: " << rc.area() << "\n"; 
+	cout << "The perimeter of " << rc.getName() << " is: " << rc.perimeter() << "\n";
+	d = rc.Circle::distance(c);
 	cout << "\nThe distance between rc and c is: " << d << "\n";
 
 	// // Using array of Shape pointers
