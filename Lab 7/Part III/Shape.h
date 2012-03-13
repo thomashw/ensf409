@@ -7,6 +7,8 @@ class Shape
 		// Pure virtual function makes this class an Abstract class
 		virtual void f() = 0;
 		
+		virtual double area();
+		virtual double perimeter();
 		Shape(char* name, double x, double y);
 		~Shape();
 		Point getOrigin();

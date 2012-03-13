@@ -1,7 +1,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
-class Rectangle : public Shape
+class Rectangle : virtual public Shape
 {
 	public:
 		virtual void f();

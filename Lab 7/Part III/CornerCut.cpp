@@ -5,6 +5,7 @@ using namespace std;
 #include "math.h"
 #include "Point.h"
 #include "Shape.h"
+#include "Square.h"
 #include "Rectangle.h"
 #include "Circle.h"
 #include "CornerCut.h"

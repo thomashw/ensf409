@@ -1,7 +1,7 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-class Circle : public Shape
+class Circle : virtual public Shape
 {
 	public:
 		virtual void f();

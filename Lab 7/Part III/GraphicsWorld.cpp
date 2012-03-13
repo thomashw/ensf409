@@ -3,6 +3,7 @@ using namespace std;
 
 #include "Point.h"
 #include "Shape.h"
+#include "Square.h"
 #include "Circle.h"
 #include "Rectangle.h"
 #include "CornerCut.h"
@@ -33,27 +34,30 @@ void GraphicsWorld::run()
 	d = rc.Circle::distance(c);
 	cout << "\nThe distance between rc and c is: " << d << "\n";
 
-	// // Using array of Shape pointers
-	// Shape* sh[4]; 
-	// sh[0] = &s
-	// sh[1] = &a;
-	// sh[2] = &c;
-	// sh[3] = &rc
+	// Using array of Shape pointers
+
+	Square s( "SQUARE - S", 5, 7, 12 ); 
+
+	Shape* sh[4]; 
+	sh[0] = &s;
+	sh[1] = &a;
+	sh[2] = &c;
+	sh[3] = &rc;
 	
-	// sh[0] -> display();
-	// cout << "\nthe area of "<< sh[0] -> getName() << " is: " << sh[0] -> area();
-	// cout << "\nthe perimeter of " << sh[0] -> getName () << " is: " << sh[0] -> perimeter();
+	sh[0] -> display();
+	cout << "\nthe area of "<< sh[0] -> getName() << " is: " << sh[0] -> area();
+	cout << "\nthe perimeter of " << sh[0] -> getName () << " is: " << sh[0] -> perimeter();
 	
-	// sh[1] -> display();
-	// cout << "\nthe area of " << sh[1] -> getName() << " is: " << sh[1] -> area();
-	// cout << "\nthe perimeter of " << sh[0] -> getName () << " is: " << sh[1] -> perimeter();
+	sh[1] -> display();
+	cout << "\nthe area of " << sh[1] -> getName() << " is: " << sh[1] -> area();
+	cout << "\nthe perimeter of " << sh[0] -> getName () << " is: " << sh[1] -> perimeter();
 	
-	// sh[2] -> display();
-	// cout << "\nthe area of " << sh[2] -> getName() << " is: " << sh[2] -> area();
-	// cout << "\nthe circumference of " << sh[2] -> getName () << " is: " << sh[2] -> perimeter();
+	sh[2] -> display();
+	cout << "\nthe area of " << sh[2] -> getName() << " is: " << sh[2] -> area();
+	cout << "\nthe circumference of " << sh[2] -> getName () << " is: " << sh[2] -> perimeter();
 	
-	// sh[3] -> display();
-	// cout << "\nthe area of " << sh[3] -> getName() << " is: " << sh[3] -> area();
+	sh[3] -> display();
+	cout << "\nthe area of " << sh[3] -> getName() << " is: " << sh[3] -> area();
 
 	
 	// // Testing Copy and Assignment operators of class CornerCut
