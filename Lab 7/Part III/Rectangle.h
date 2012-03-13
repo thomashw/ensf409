@@ -12,6 +12,7 @@ class Rectangle : public Shape
 		double getSideB();
 		void setSideA(double side);
 		void setSideB(double side);
+		char* getName();
 		void display();
 
 	private:

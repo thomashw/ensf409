@@ -4,6 +4,7 @@ using namespace std;
 #include "Point.h"
 #include "Shape.h"
 #include "Rectangle.h"
+#include "CornerCut.h"
 #include "GraphicsWorld.h"
 
 int main( void )

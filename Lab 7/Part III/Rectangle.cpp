@@ -44,6 +44,11 @@ void Rectangle::setSideB(double side)
 	side_b = side;
 }
 
+char* Rectangle::getName()
+{
+	return Shape::getName();
+}
+
 void Rectangle::display()
 {
 	Shape::display();

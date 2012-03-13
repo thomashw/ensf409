@@ -4,6 +4,7 @@ using namespace std;
 #include "Point.h"
 #include "Shape.h"
 #include "Circle.h"
+#include "CornerCut.h"
 #include "Rectangle.h"
 #include "GraphicsWorld.h"
 
@@ -24,13 +25,13 @@ void GraphicsWorld::run()
 	double d = a.distance(c);
 	cout << "\nThe distance between rectangle a and circle c is: " << d << "\n";
 
-	// // Testing functions in class CornerCut. 
-	// CornerCut rc (6, 5, 10, 12, 3 “CornerCut rc”);
-	// rc.display();
-	// cout << "The area of " << rc.getName() << " is: " << rc.area(); 
-	// cout << "The perimeter of " << rc.getName() << " is: " << rc.perimeter();
-	// d = rc.distance(c);
-	// cout << "\nThe distance between rc and c is: " << d << "\n";
+	// Testing functions in class CornerCut. 
+	CornerCut rc ( "CornerCut rc", 6, 5, 10, 12, 3 );
+	rc.display();
+	cout << "The area of " << rc.getName() << " is: " << rc.area(); 
+	cout << "The perimeter of " << rc.getName() << " is: " << rc.perimeter();
+	d = rc.distance(c);
+	cout << "\nThe distance between rc and c is: " << d << "\n";
 
 	// // Using array of Shape pointers
 	// Shape* sh[4]; 
