@@ -25,16 +25,16 @@ void GraphicsWorld::run()
 
 	// Testing Square
 	cout << "\nTesting Functions in class Square:\n";
-	Square s( "SQUARE - S", 5, 7, 12 ); 
+	Square s( (char*)"SQUARE - S", 5, 7, 12 ); 
 	s.display();
 	cout << "The area of " << s.getName() << " is: " << s.area() << "\n"; 
 	cout << "The perimeter of " << s.getName() << " is: " << s.perimeter() << "\n";
 
 	// Testing Rectangle
 	cout << "\nTesting Functions in class Rectangle:\n";
-	Rectangle a( "RECTANGLE A", 5, 7, 12, 15 ); 
+	Rectangle a( (char*)"RECTANGLE A", 5, 7, 12, 15 ); 
 	a.display();
-	Rectangle b( "RECTANGLE B", 16 , 7, 8, 9 ); 
+	Rectangle b( (char*)"RECTANGLE B", 16 , 7, 8, 9 ); 
 	b.display();
 	cout << "The area of " << a.getName() << " is: " << a.area() << "\n"; 
 	cout << "The perimeter of " << a.getName() << " is: " << a.perimeter() << "\n";
