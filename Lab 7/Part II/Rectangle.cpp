@@ -14,6 +14,24 @@ Rectangle::Rectangle(char* name, double x, double y, double sideA, double sideB)
 	side_b = sideB;
 }
 
+Rectangle& Rectangle::operator =(const Rectangle& r)
+{
+	if( this == &r) {
+		return *this;
+	}
+
+	delete [] shapeName;
+	lengthName = strlen(r.shapeName);
+    shapeName = new char[lengthName + 1];
+    strcpy(shapeName, r.shapeName);
+
+    origin = r.origin;
+    side_a = r.side_a;
+    side_b = r.side_b;
+
+    return *this;
+}
+
 double Rectangle::area()
 {
 	return side_a * side_b;

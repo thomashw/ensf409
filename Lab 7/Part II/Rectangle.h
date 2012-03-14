@@ -13,6 +13,7 @@ class Rectangle : public Shape
 		void setSideA(double side);
 		void setSideB(double side);
 		void display();
+		Rectangle & operator=(const Rectangle& r);
 
 	private:
 		double side_a;

@@ -7,8 +7,8 @@ using namespace std;
 
 Shape::Shape(char* name, double x, double y) : origin(x,y)
 {
-	lenghtName = strlen(name);
-	shapeName = new char[lenghtName + 1];
+	lengthName = strlen(name);
+	shapeName = new char[lengthName + 1];
 	strcpy(shapeName, name);
 }
 
@@ -21,9 +21,10 @@ Shape& Shape::operator =(Shape& s)
 {
 	if(this == &s)
     	return *this;
+    
     delete [] shapeName;
-    lenghtName = strlen(s.shapeName);
-    shapeName = new char[lenghtName + 1];
+    lengthName = strlen(s.shapeName);
+    shapeName = new char[lengthName + 1];
     strcpy(shapeName, s.shapeName);
     origin = s.origin;
     return *this;
@@ -43,7 +44,7 @@ void Shape::display()
 {
 	cout << "Shape Name: ";
 
-	for( int i = 0; i < lenghtName; i++ )
+	for( int i = 0; i < lengthName; i++ )
 	{
 		cout << shapeName[i];
 	}

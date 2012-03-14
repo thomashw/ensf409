@@ -20,7 +20,7 @@ class Shape
 	protected:
 		Point origin;
 		char* shapeName;
-		int lenghtName;
+		int lengthName;
 
 };
 

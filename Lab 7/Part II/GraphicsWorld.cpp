@@ -43,8 +43,8 @@ void GraphicsWorld::run()
 
 	// Testing copy constructor
 	cout << "\nTesting the assignment operator in class Rectangle:\n";
-	Rectangle rec1 = a; 
-	rec1.display();
+	b = a;
+	b.display();
 
 	cout << "\n.. Done Testing.\n\n";
 }
