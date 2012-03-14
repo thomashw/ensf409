@@ -42,9 +42,9 @@ void GraphicsWorld::run()
 	cout << "The distance between the two rectangles is: " << d << "\n";
 
 	// Testing copy constructor
-	cout << "\nTesting the assignment operator in class Rectangle:\n";
-	b = a;
-	b.display();
+	cout << "\nTesting the copy constructor in class Rectangle:\n";
+	Rectangle rec1 = a;
+	rec1.display();
 
 	cout << "\n.. Done Testing.\n\n";
 }

@@ -14,6 +14,12 @@ Rectangle::Rectangle(char* name, double x, double y, double sideA, double sideB)
 	side_b = sideB;
 }
 
+Rectangle::Rectangle(Rectangle& r) : Shape(r.shapeName, r.origin.getX(), r.origin.getY())
+{
+	side_a = r.side_a;
+	side_b = r.side_b;
+}
+
 Rectangle& Rectangle::operator =(const Rectangle& r)
 {
 	if( this == &r) {

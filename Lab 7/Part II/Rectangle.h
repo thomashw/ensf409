@@ -5,6 +5,7 @@ class Rectangle : public Shape
 {
 	public:
 		virtual void f();
+		Rectangle(Rectangle& r);
 		Rectangle(char* name, double x, double y, double sideA, double sideB);
 		double area();
 		double perimeter();
