@@ -2,17 +2,17 @@
 using namespace std;
 
 #include <string.h>
-#include "math.h"
 #include "Point.h"
 #include "Shape.h"
 #include "Square.h"
-#include "Rectangle.h"
 #include "Circle.h"
+#include "Rectangle.h"
 #include "CornerCut.h"
+#include "GraphicsWorld.h"
 
 void CornerCut::f() {}
 
-CornerCut::CornerCut(char* name, double x, double y, double sideA, double sideB, double r) : Rectangle(name,x,y,sideA,sideB), Circle(name,x,y,r) 
+CornerCut::CornerCut(char* name, double x, double y, double sideA, double sideB, double r) : Rectangle(name,x,y,sideA,sideB), Circle(name,x,y,r), Shape(name,x,y) 
 {}
 
 double CornerCut::area()

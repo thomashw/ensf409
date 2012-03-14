@@ -3,6 +3,8 @@ using namespace std;
 
 #include "Point.h"
 #include "Shape.h"
+#include "Square.h"
+#include "Circle.h"
 #include "Rectangle.h"
 #include "CornerCut.h"
 #include "GraphicsWorld.h"

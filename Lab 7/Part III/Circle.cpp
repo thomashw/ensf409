@@ -2,10 +2,14 @@
 using namespace std;
 
 #include <string.h>
-#include "math.h"
+#include <math.h>
 #include "Point.h"
 #include "Shape.h"
+#include "Square.h"
 #include "Circle.h"
+#include "Rectangle.h"
+#include "CornerCut.h"
+#include "GraphicsWorld.h"
 
 void Circle::f() {}
 

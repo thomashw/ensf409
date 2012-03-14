@@ -1,13 +1,16 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
+#include "Point.h"
+#include "Shape.h"
+
 class Rectangle : virtual public Shape
 {
 	public:
 		virtual void f();
 		Rectangle(char* name, double x, double y, double sideA, double sideB);
-		double area();
-		double perimeter();
+		virtual double area();
+		virtual double perimeter();
 		double getSideA();
 		double getSideB();
 		void setSideA(double side);

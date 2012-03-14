@@ -4,7 +4,11 @@ using namespace std;
 #include <string.h>
 #include "Point.h"
 #include "Shape.h"
+#include "Square.h"
+#include "Circle.h"
 #include "Rectangle.h"
+#include "CornerCut.h"
+#include "GraphicsWorld.h"
 
 void Rectangle::f() {}
 

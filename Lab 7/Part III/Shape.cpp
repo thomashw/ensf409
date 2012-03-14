@@ -5,6 +5,10 @@ using namespace std;
 #include "Point.h"
 #include "Shape.h"
 
+void Shape::f() {}
+double Shape::area() {}
+double Shape::perimeter() {}
+
 Shape::Shape(char* name, double x, double y) : origin(x,y)
 {
 	lenghtName = strlen(name);

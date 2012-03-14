@@ -36,4 +36,4 @@ void Square::setSideA(double side)
 void Square::display()
 {
 	Shape::display();
-}	
+}
