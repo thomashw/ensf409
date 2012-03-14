@@ -62,20 +62,19 @@ void GraphicsWorld::run()
 	cout << "\n\n";
 	sh[3] -> display();
 	cout << "The area of " << sh[3] -> getName() << " is: " << sh[3] -> area();
-	cout << "\nThe circumference of " << sh[3] -> getName () << " is: " << sh[3] -> perimeter() << "\n";
+	cout << "\nThe perimeter of " << sh[3] -> getName () << " is: " << sh[3] -> perimeter() << "\n";
 	
-	// // Testing Copy and Assignment operators of class CornerCut
-	// cout << "\nthe perimeter of " << sh[3] -> getName() << " is: " << sh[3] -> perimeter();
+	// Testing Copy and Assignment operators of class CornerCut
+	cout << "\n-Testing copy constructor in class CornerCut:" << "\n"; 
+	CornerCut cc = rc;
+	cc.display();
 	
-	// cout << "\nTesting copy constructor in class CornerCut:" << "\n"; 
-	// CornerCut cc = rc;
-	// cc.display();
-	
-	// cout << "\nTesting assignment operator in class CornerCut:" << "\n";
-	// CornerCut cc2(2, 5, 100, 12, 9, "CornerCut cc2"); c
-	// c2.display();
-	// cc2 = cc;
-	// cc2.display();
+	cout << "\n-Testing assignment operator in class CornerCut:" << "\n";
+	CornerCut cc2( "CornerCut cc2", 2, 5, 100, 12, 9 ); 
+	cc2.display();
+	cc2 = cc;
+	cout << "\n";
+	cc2.display();
 
 	cout << "\n.. Done Testing.\n\n";
 }

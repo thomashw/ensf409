@@ -37,3 +37,21 @@ void CornerCut::display()
 	cout << "Length: " << Rectangle::getSideB() << "\n";
 	cout << "Radius of the cut: " << Circle::getRadius() << "\n";
 }
+
+CornerCut& CornerCut::operator =(CornerCut& cc)
+{
+	if(this == &cc)
+    	return *this;
+
+    delete [] shapeName;
+    lenghtName = strlen(cc.shapeName);
+    shapeName = new char[lenghtName + 1];
+    strcpy(shapeName, cc.shapeName);
+
+    origin = cc.origin;
+    side_a = cc.side_a;
+    side_b = cc.side_b;
+    radius = cc.radius;
+    
+    return *this;
+}

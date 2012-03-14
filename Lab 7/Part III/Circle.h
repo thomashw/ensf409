@@ -15,7 +15,7 @@ class Circle : virtual public Shape
 		void setRadius(double side);
 		void display();
 
-	private:
+	protected:
 		double radius;
 };
 

@@ -18,7 +18,7 @@ class Rectangle : virtual public Shape
 		char* getName();
 		void display();
 
-	private:
+	protected:
 		double side_a;
 		double side_b;
 };

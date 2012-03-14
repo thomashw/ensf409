@@ -15,6 +15,7 @@ class CornerCut : public Rectangle, public Circle
 		virtual double perimeter();
 		char* getName();
 		void display();
+		CornerCut& operator =(CornerCut& cc);
 
 	private:
 
