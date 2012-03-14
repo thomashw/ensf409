@@ -15,11 +15,11 @@ void GraphicsWorld::run()
 {
 	cout << "\n** Program Written by: Andrew Winkler & Thomas Hewton-Waters **\n";
 
-	Rectangle a ( "RECTANGLE A", 5, 7, 12, 15 );
+	Rectangle a ( (char*)"RECTANGLE A", 5, 7, 12, 15 );
 
 	// Testing functions in class Circle
 	cout << "\n-Testing Functions in class Circle:" << "\n";
-	Circle c ( "CIRCLE C", 3, 5, 9 ); 
+	Circle c ( (char*)"CIRCLE C", 3, 5, 9 ); 
 	c.display();
 	cout << "The area of " << c.getName() << " is: " << c.area() << "\n"; 
 	cout << "The circumference of " << c.getName() << " is: " << c.perimeter() << "\n"; 
@@ -28,7 +28,7 @@ void GraphicsWorld::run()
 
 	// Testing functions in class CornerCut
 	cout << "\n-Testing Functions in class CornerCut:" << "\n";
-	CornerCut rc ( "CornerCut rc", 6, 5, 10, 12, 3 );
+	CornerCut rc ( (char*)"CornerCut rc", 6, 5, 10, 12, 3 );
 	rc.display();
 	cout << "The area of " << rc.getName() << " is: " << rc.area() << "\n"; 
 	cout << "The perimeter of " << rc.getName() << " is: " << rc.perimeter() << "\n";
@@ -37,7 +37,7 @@ void GraphicsWorld::run()
 
 	// Using array of Shape pointers
 	cout << "\n-Testing array of Shape pointers:" << "\n";
-	Square s ( "SQUARE - S", 5, 7, 12 ); 
+	Square s ( (char*)"SQUARE - S", 5, 7, 12 ); 
 
 	Shape* sh[4]; 
 	sh[0] = &s;
@@ -70,7 +70,7 @@ void GraphicsWorld::run()
 	cc.display();
 	
 	cout << "\n-Testing assignment operator in class CornerCut:" << "\n";
-	CornerCut cc2( "CornerCut cc2", 2, 5, 100, 12, 9 ); 
+	CornerCut cc2( (char*)"CornerCut cc2", 2, 5, 100, 12, 9 ); 
 	cc2.display();
 	cc2 = cc;
 	cout << "\n";
