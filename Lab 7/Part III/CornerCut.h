@@ -11,6 +11,7 @@ class CornerCut : public Rectangle, public Circle
 	public:
 		virtual void f();
 		CornerCut(char* name, double x, double y, double sideA, double sideB, double r);
+		CornerCut(const CornerCut& c);
 		virtual double area();
 		virtual double perimeter();
 		char* getName();
@@ -18,7 +19,6 @@ class CornerCut : public Rectangle, public Circle
 		CornerCut& operator =(CornerCut& cc);
 
 	private:
-
 };
 
 #endif

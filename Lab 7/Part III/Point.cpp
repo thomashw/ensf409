@@ -13,12 +13,12 @@ Point::Point(double x, double y)
 
 int Point::numPoints = 0;
 
-int Point::getX()
+int Point::getX() const
 {
 	return xCor;
 }
 
-int Point::getY()
+int Point::getY() const
 {
 	return yCor;
 }

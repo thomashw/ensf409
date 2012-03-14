@@ -5,8 +5,8 @@ class Point
 {
 	public:
 		Point(double x, double y);
-		int getX();
-		int getY();
+		int getX() const;
+		int getY() const;
 		void setX(double x);
 		void setY(double y);
 		int getID();
