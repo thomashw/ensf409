@@ -60,7 +60,7 @@ public:
 private:
   T *array;               // points to the first element of an array of T
   int size;               // size of array
-	void swap(int&, int &); // swaps the values of two elements in array 
+	void swap(T&, T&); // swaps the values of two elements in array 
 public:
 };
 
@@ -68,7 +68,7 @@ template <class T>
 Vector<T>::Vector(int sz)
 {
   size=sz;
-  array = new int [sz];
+  array = new T [sz];
   assert (array != NULL);
 }
 
@@ -95,9 +95,9 @@ void Vector<T>::ascending_sort()
 }
 
 template <class T>
-void Vector<T>::swap(int& a, int& b)
+void Vector<T>::swap(T& a, T& b)
 {
-  int tmp = a;
+  T tmp = a;
   a = b;
   b = tmp;
 }

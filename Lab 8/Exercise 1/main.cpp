@@ -1,24 +1,21 @@
 #include <iostream>
 #include "Vector.h"
+#include <string.h>
 
 using namespace std;
 
 int main()
 {
 
- Vector <int> x(3);
- x[0] = 999;
- x[1] = -77;
- x[2] = 88;
+	Vector <int> x(3);
+	x[0] = 999;
+	x[1] = -77;
+	x[2] = 88;
 
- Vector<int>::VectIter iter(x);
+	Vector<int>::VectIter iter(x);
 
- cout << "\n\nThe first element of vector x contains: " << *iter; 
+	cout << "\n\nThe first element of vector x contains: " << *iter; 
 
- // the code between the  #if 0 and #endif is ignored by
- // compiler. If you change it to #if 1, it will be compiled
- 
-#if 0	
 	cout << "\nTesting an <int> Vector: " << endl;;
 	
 	cout << "\n\nTesting sort";
@@ -42,12 +39,12 @@ int main()
 	cout << endl;
 	
 	cout << "Testing a <String> Vector: " << endl;
-	Vector<String> y(3);
+	Vector<string> y(3);
 	y[0] = "Bar";
 	y[1] = "Foo";
 	y[2] = "All";;
 	
-	Vector<String>::VectIter iters(y);
+	Vector<string>::VectIter iters(y);
 	
 	cout << "\n\nTesting sort";
 	y.ascending_sort();
@@ -69,9 +66,9 @@ int main()
 	
 	cout << endl; cout << "Testing a <char *> Vector: " << endl;
 	Vector<char*> z(3);
-	z[0] = "Orange";
-	z[1] = "Pear";
-	z[2] = "Apple";;
+	z[0] = (char*)"Orange";
+	z[1] = (char*)"Pear";
+	z[2] = (char*)"Apple";;
 	
 	Vector<char*>::VectIter iterchar(z);
 	
@@ -81,8 +78,7 @@ int main()
 	for (int i=0; i<3 ; i++)
 		cout << endl << iterchar++;
 	
-#endif
-	cout << "\nPrgram Terminated Successfully." << endl;
+	cout << "\nProgram Terminated Successfully." << endl;
 	
 	return 0;
 }
