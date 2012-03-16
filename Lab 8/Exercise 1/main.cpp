@@ -6,12 +6,12 @@ using namespace std;
 int main()
 {
 
- Vector x(3);
+ Vector <int> x(3);
  x[0] = 999;
  x[1] = -77;
  x[2] = 88;
 
- Vector::VectIter iter(x);
+ Vector<int>::VectIter iter(x);
 
  cout << "\n\nThe first element of vector x contains: " << *iter; 
 
