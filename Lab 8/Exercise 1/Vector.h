@@ -1,4 +1,7 @@
 #include <assert.h>
+#include <iostream>
+
+using namespace std;
 
 template <class T>
 class Vector {
@@ -12,7 +15,7 @@ public:
                   // array.
   public:
     VectIter(Vector<T>& x);
- 
+
     T operator++();
     //PROMISES: increments the iterator's indes and return the 
     //          value of the element at the index position. If
@@ -54,9 +57,9 @@ public:
   //           array or sets a new value to  the ith element in
   //           array. 
   
-	void ascending_sort();
+  void ascending_sort();
   // PRIMISES: sorts the vector values in ascending order. 
-	
+
 private:
   T *array;               // points to the first element of an array of T
   int size;               // size of array
@@ -88,10 +91,24 @@ Vector<T>::~Vector()
 template <class T>
 void Vector<T>::ascending_sort()
 {
-  for(int i=0; i< size-1; i++)
-    for(int j=i+1; j < size; j++)
+  for(int i=0; i< size-1; i++) {
+    for(int j=i+1; j < size; j++) {
       if(array[i] > array[j])
         swap(array[i], array[j]);
+    }
+  }
+}
+
+template <>
+void Vector<char*>::ascending_sort()
+{
+  for( int i = 0; i < size-1; i++ ) {
+    for( int j = i+1; j < size; j++ ) {
+      if( strcmp( array[i], array[j] ) > 0 ) {
+        swap( array[i], array[j] );
+      }
+    }
+  }
 }
 
 template <class T>

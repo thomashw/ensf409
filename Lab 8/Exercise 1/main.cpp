@@ -12,13 +12,14 @@ int main()
 	x[1] = -77;
 	x[2] = 88;
 
+	cout << "\nCreating an <int> vector";
+
 	Vector<int>::VectIter iter(x);
 
-	cout << "\n\nThe first element of vector x contains: " << *iter; 
+	cout << "\nThe first element of vector x contains: " << *iter; 
+	cout << "\nTesting an <int> Vector: ";
+	cout << "\nTesting sort:";
 
-	cout << "\nTesting an <int> Vector: " << endl;;
-	
-	cout << "\n\nTesting sort";
 	x.ascending_sort();
 	
 	for (int i=0; i<3 ; i++)
@@ -32,13 +33,13 @@ int main()
 	for (int i=0; i<3 ; i++)
 		cout << endl << ++iter;	
 	
-	cout << "\n\nTesting Postfix --";
+	cout << "\n\nTesting Postfix --:";
 	for (int i=0; i<3 ; i++)
 		cout << endl << iter--;
 	
 	cout << endl;
 	
-	cout << "Testing a <String> Vector: " << endl;
+	cout << "\nTesting a <String> Vector: ";
 	Vector<string> y(3);
 	y[0] = "Bar";
 	y[1] = "Foo";
@@ -46,7 +47,7 @@ int main()
 	
 	Vector<string>::VectIter iters(y);
 	
-	cout << "\n\nTesting sort";
+	cout << "\nTesting sort:";
 	y.ascending_sort();
 	
 	for (int i=0; i<3 ; i++)
@@ -60,11 +61,13 @@ int main()
 	for (int i=0; i<3 ; i++)
 		cout << endl << ++iters;
 	
-	cout << "\n\nTesting Postfix --";
+	cout << "\n\nTesting Postfix --:";
 	for (int i=0; i<3 ; i++)
 		cout << endl << iters--;
 	
-	cout << endl; cout << "Testing a <char *> Vector: " << endl;
+	cout << endl; 
+
+	cout << "\nTesting a <char *> Vector: ";
 	Vector<char*> z(3);
 	z[0] = (char*)"Orange";
 	z[1] = (char*)"Pear";
@@ -72,13 +75,13 @@ int main()
 	
 	Vector<char*>::VectIter iterchar(z);
 	
-	cout << "\n\nTesting sort";
+	cout << "\nTesting sort:";
 	z.ascending_sort();
 	
 	for (int i=0; i<3 ; i++)
 		cout << endl << iterchar++;
 	
-	cout << "\nProgram Terminated Successfully." << endl;
+	cout << "\n\nProgram Terminated Successfully." << endl;
 	
 	return 0;
 }

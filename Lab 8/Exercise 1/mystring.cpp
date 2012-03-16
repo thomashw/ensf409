@@ -17,7 +17,7 @@ Mystring::Mystring()
 }
 
 Mystring::Mystring(const char *s)
-  : lengthM(strlen(s))
+: lengthM(strlen(s))
 {
   charsM = new char[lengthM + 1];
 
@@ -28,7 +28,7 @@ Mystring::Mystring(const char *s)
 }
 
 Mystring::Mystring(int n)
-  : lengthM(0), charsM(new char[n])
+: lengthM(0), charsM(new char[n])
 {
   // make sure memory is allocated.
   memory_check(charsM);
@@ -36,7 +36,7 @@ Mystring::Mystring(int n)
 }
 
 Mystring::Mystring(const Mystring& source):
-  lengthM(source.lengthM), charsM(new char[source.lengthM+1])
+lengthM(source.lengthM), charsM(new char[source.lengthM+1])
 {
   memory_check(charsM);
   strcpy (charsM, source.charsM);
@@ -70,13 +70,13 @@ void Mystring::set_char(int pos, char c)
 {
   if(pos < 0 && pos >= length()){
     cerr << "\nset_char: the position is out of boundary."
-	 << " Nothing was changed.";
+    << " Nothing was changed.";
     return;
   } 
 
   if (c != '\0'){
     cerr << "\nset_char: char c is empty."
-	 << " Nothing was changed.";
+    << " Nothing was changed.";
     return;
   }
 
@@ -109,14 +109,14 @@ Mystring& Mystring::append(const Mystring& other)
   return *this;
 }
 
- void Mystring::set_str(char* s)
+void Mystring::set_str(char* s)
 {
-    delete []charsM;
-    lengthM = strlen(s);
-    charsM=new char[lengthM+1];
-    memory_check(charsM);
+  delete []charsM;
+  lengthM = strlen(s);
+  charsM=new char[lengthM+1];
+  memory_check(charsM);
 
-    strcpy(charsM, s);
+  strcpy(charsM, s);
 }
 
 int Mystring::isNotEqual (const Mystring& s)const
@@ -143,10 +143,10 @@ int Mystring::isLessThan (const Mystring& s)const
 void Mystring::memory_check(char* s)
 {
   if(s == 0)
-    {
-      cerr <<"Memory not available.";
-      exit(1);
-    }
+  {
+    cerr <<"Memory not available.";
+    exit(1);
+  }
 }
 
 
