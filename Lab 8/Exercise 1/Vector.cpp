@@ -25,12 +25,6 @@ int Vector::VectIter::operator *()
   return v -> array[index];
 }
 
-Vector::VectIter::VectIter(Vector& x)
-{
-  v = &x;
-  index = 0;
-}
-
 Vector::Vector(int sz)
 {
   size=sz;
@@ -47,4 +41,46 @@ Vector::~Vector()
 int & Vector ::operator [] (int i)
 {
   return array[i];
+}
+
+Vector::VectIter::VectIter(Vector& x)
+{
+  v = &x;
+  index = 0;
+}
+
+int Vector::VectIter::operator ++()
+{
+	if( ++index >= v->size )
+		index = 0;
+
+	return v->array[index];
+}
+
+int Vector::VectIter::operator ++(int)
+{
+	int old_index = index;
+
+	if( ++index >= v->size )
+		index = 0;
+
+	return v->array[old_index];
+}
+
+int Vector::VectIter::operator --()
+{
+	if( --index < 0 )
+		index = v->size - 1;
+
+	return v->array[index];
+}
+
+int Vector::VectIter::operator --(int)
+{
+	int old_index = index;
+
+	if( --index < 0 )
+		index = v->size - 1;
+
+	return v->array[old_index];
 }
