@@ -73,11 +73,11 @@ public:
     };
 
     LookupTable();
-    LookupTable(const LookupTable  & source);
-    LookupTable& operator =(const LookupTable& rhs);
+    LookupTable(const T& source);
+    T& operator =(const T& rhs);
     ~LookupTable();
 
-    LookupTable& begin();
+    T& begin();
 
     int size() const;
   // PROMISES: Returns number of keys in the table.
@@ -134,7 +134,7 @@ public:
 
   // friend  ostream& operator << <K,D> (ostream& os,const LookupTable<K,D>& lt);
 
-    friend  ostream& operator << (ostream& os, const LookupTable<T>& lt);
+    friend  ostream& operator << (ostream& os, const T& lt);
 
   private:
     int sizeM;
@@ -144,7 +144,7 @@ public:
     void destroy();
   // Deallocate all nodes, set headM to zero.
 
-    void copy(const LookupTable& source);
+    void copy(const T& source);
   // Establishes *this as a copy of source.  Cursor of *this will
   // point to the twin of whatever the source's cursor points to.
   };
@@ -152,7 +152,7 @@ public:
 #endif
 
 template <class T>
-  LookupTable<T>& LookupTable<T>::begin(){
+  T& LookupTable<T>::begin(){
     cursorM = headM;
     return *this;
   }
@@ -170,13 +170,13 @@ template <class T>
   }
 
 template <class T>
-  LookupTable<T>::LookupTable(const LookupTable& source)
+  LookupTable<T>::LookupTable(const T& source)
   {
     copy(source);
   }
 
 template <class T>
-  LookupTable& LookupTable<T>::operator =(const LookupTable& rhs)
+  T& LookupTable<T>::operator =(const T& rhs)
   {
     if (this != &rhs) {
       destroy();
@@ -341,7 +341,7 @@ void LookupTable<T>::destroy()
 }
 
 template <class T>
-void LookupTable<T>::copy(const LookupTable& source)
+void LookupTable<T>::copy(const T& source)
 {
 
   headM=0;
@@ -360,7 +360,7 @@ void LookupTable<T>::copy(const LookupTable& source)
 
 }
 
-ostream& operator << (ostream& os, const LookupTable& lt)
+LookupTable>T>::ostream& operator << (ostream& os, const T& lt)
 {
   if (lt.cursor_ok())
     os <<lt.cursor_key() << "  " << lt.cursor_datum();
