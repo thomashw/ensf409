@@ -5,15 +5,13 @@
 #include <iostream>
 #include "LookupTable.h"
 #include "Customer.h"
-#include "Customer.h"
 
 using namespace std;
 
 
-void print(LookupTable& lt);
+void print(T& lt);
 
-
-void try_to_find(LookupTable& lt, int key);
+void try_to_find(T& lt, int key);
 
 void test_Customer();
 
@@ -46,7 +44,7 @@ int main()
 
 
 
-void print(LookupTable& lt)
+void print(T& lt)
 {
   if (lt.size() == 0)
     cout << "  Table is EMPTY.\n";
@@ -57,7 +55,7 @@ void print(LookupTable& lt)
 
 
 
-void try_to_find(LookupTable& lt, int key)
+void try_to_find(T& lt, int key)
 {
   lt.find(key);
   if (lt.cursor_ok())
@@ -65,8 +63,6 @@ void try_to_find(LookupTable& lt, int key)
   else
     cout << "\nSorry, I couldn't find key: " << key << " in the table.\n";
 }
-
-
 
 
 void test_Customer()
