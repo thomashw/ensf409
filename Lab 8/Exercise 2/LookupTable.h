@@ -28,18 +28,15 @@ using namespace std;
 //    is introduced which represents a key/data pair.
 
 
-typedef int LT_Key; 
-typedef Customer LT_Datum;
- 
 struct Pair 
 {
   //constructor
-  Pair(LT_Key keyA,LT_Datum datumA):key(keyA), datum(datumA)
+  Pair(int keyA,Customer datumA):key(keyA), datum(datumA)
   {
   } 
   
-  LT_Key key;
-  LT_Datum datum;
+  int key;
+  Customer datum;
 };
 
 
@@ -66,9 +63,9 @@ class LookupTable {
   public:
     Iterator():LT(0){}
     Iterator(LookupTable & x): LT(&x){}    
-    const LT_Datum&  operator *();
-    const LT_Datum& operator ++();
-    const LT_Datum& operator ++(int);
+    const Customer&  operator *();
+    const Customer& operator ++();
+    const Customer& operator ++(int);
     int operator !();
 
     void step_fwd(){  assert(LT->cursor_ok());
@@ -90,11 +87,11 @@ class LookupTable {
   //   Returns 1 if the cursor is attached to a key/datum pair,
   //   and 0 if the cursor is in the off-list state.
 
-  const LT_Key& cursor_key() const;
+  const int& cursor_key() const;
   // REQUIRES: cursor_ok()
   // PROMISES: Returns key of key/datum pair to which cursor is attached.
 
-  const LT_Datum& cursor_datum() const;
+  const Customer& cursor_datum() const;
   // REQUIRES: cursor_ok()
   // PROMISES: Returns datum of key/datum pair to which cursor is attached.
 
@@ -106,14 +103,14 @@ class LookupTable {
   //   used to create a new key/datum pair in the table.
   //   In either case, the cursor goes to the off-list state.
 
-  void remove(const LT_Key& keyA);
+  void remove(const int& keyA);
   // PROMISES:
   //   If keyA matches a key in the table, the corresponding
   //   key/datum pair is removed from the table.
   //   If keyA does not match an existing key, the table is unchanged.
   //   In either case, the cursor goes to the off-list state.
 
-  void find(const LT_Key& keyA);
+  void find(const int& keyA);
   // PROMISES:
   //   If keyA matches a key in the table, the cursor is attached
   //   to the corresponding key/datum pair.
@@ -208,13 +205,13 @@ int LookupTable::cursor_ok() const
 
 
 
-const LT_Key& LookupTable::cursor_key() const
+const int& LookupTable::cursor_key() const
 {
   assert(cursor_ok());
   return cursorM->pairM.key;
 }
 
-const LT_Datum& LookupTable::cursor_datum() const
+const Customer& LookupTable::cursor_datum() const
 {
   assert(cursor_ok());
   return cursorM->pairM.datum;
@@ -258,7 +255,7 @@ void LookupTable::insert(const Pair& pairA)
 }
 
 
-void LookupTable::remove(const LT_Key& keyA)
+void LookupTable::remove(const int& keyA)
 {
 
   if (headM == 0 || keyA < headM->pairM.key)
@@ -294,7 +291,7 @@ void LookupTable::remove(const LT_Key& keyA)
 
 
 
-void LookupTable::find(const LT_Key& keyA)
+void LookupTable::find(const int& keyA)
 {
   LT_Node *ptr=headM;
   while (ptr!=NULL && ptr->pairM.key != keyA)
@@ -377,21 +374,21 @@ ostream& operator <<   (ostream& os, const LookupTable& lt)
   return os;
 }
 
-const LT_Datum& LookupTable::Iterator::operator *()
+const Customer& LookupTable::Iterator::operator *()
 {
   assert(LT ->cursor_ok());
   return LT->cursor_datum();
 }
 
-const LT_Datum& LookupTable::Iterator::operator ++()
+const Customer& LookupTable::Iterator::operator ++()
 {
   assert(LT->cursor_ok());
-  const LT_Datum & x = LT->cursor_datum();
+  const Customer & x = LT->cursor_datum();
   LT->step_fwd();
   return x;
 }
 
-const LT_Datum& LookupTable::Iterator::operator ++(int)
+const Customer& LookupTable::Iterator::operator ++(int)
 {
   assert(LT->cursor_ok());
  
