@@ -134,7 +134,7 @@ public:
 
   // friend  ostream& operator << <K,D> (ostream& os,const LookupTable<K,D>& lt);
 
-  friend ostream& operator << <>(ostream& os, const LookupTable& lt);
+  friend ostream& operator << <>(ostream& os, const LookupTable<T>& lt);
 
   private:
     int sizeM;
