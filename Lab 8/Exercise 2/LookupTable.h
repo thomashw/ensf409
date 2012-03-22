@@ -134,7 +134,7 @@ public:
 
   // friend  ostream& operator << <K,D> (ostream& os,const LookupTable<K,D>& lt);
 
-    friend  ostream& operator << (ostream& os, const T& lt);
+  friend ostream& operator << <>(ostream& os, const LookupTable& lt);
 
   private:
     int sizeM;
@@ -360,7 +360,8 @@ void LookupTable<T>::copy(const T& source)
 
 }
 
-LookupTable>T>::ostream& operator << (ostream& os, const T& lt)
+template <class T>
+ostream& operator << (ostream& os, const LookupTable<T>& lt)
 {
   if (lt.cursor_ok())
     os <<lt.cursor_key() << "  " << lt.cursor_datum();
