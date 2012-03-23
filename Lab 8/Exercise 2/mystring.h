@@ -3,6 +3,10 @@
 #ifndef MYSTRING_H
 #define MYSTRING_H
 
+#include <iostream>
+
+using namespace std;
+
 class Mystring {
  public:
   Mystring();
@@ -26,6 +30,8 @@ class Mystring {
   // REQUIRES: rhs is reference to a Mystring as a source
   // PROMISES: to make this-object (object that this is pointing to, as  a copy 
   //           of rhs.
+
+  friend ostream& operator << (ostream&,  const Mystring& c);
 
   int length() const;
   // PROMISES: Return value is number of chars in charsM.

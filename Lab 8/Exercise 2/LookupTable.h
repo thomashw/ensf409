@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <assert.h>
+#include "mystring.h"
 
 using namespace std;
 
@@ -34,7 +35,7 @@ public:
   struct Pair 
   {
   //constructor
-    Pair(int keyA,Customer datumA):key(keyA), datum(datumA)
+    Pair(T keyA, X datumA):key(keyA), datum(datumA)
     {
     } 
 
@@ -55,7 +56,7 @@ public:
 
   // Nested class
   class Iterator {
-    friend class LookupTable ;
+    friend class LookupTable;
     LookupTable *LT;
     LT_Node* cursor;
     
@@ -136,7 +137,7 @@ public:
     friend ostream& operator << (ostream& os, const LookupTable<T, X>& lt)
     {
       if (lt.cursor_ok())
-        os <<lt.cursor_key() << "  " << lt.cursor_datum();
+        os << lt.cursor_key() << "  " << lt.cursor_datum();
       else
         os<<"Not Found.";
 

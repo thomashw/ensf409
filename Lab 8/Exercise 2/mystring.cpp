@@ -95,6 +95,13 @@ Mystring& Mystring::operator =(const Mystring& S)
   return *this;
 }
 
+ostream& operator << (ostream& os, const Mystring& c)
+{
+  os << c.charsM;
+
+  return os;
+}
+
 Mystring& Mystring::append(const Mystring& other)
 {
   char *tmp = new char [lengthM + other.lengthM + 1];

@@ -5,16 +5,18 @@
 #include <iostream>
 #include "LookupTable.h"
 #include "Customer.h"
+#include "mystring.h"
 
 using namespace std;
 
-template <class T>
-void print(T& lt);
+template <class T, class X>
+void print(LookupTable<T, X>& lt);
 
-template <class T>
-void try_to_find(T& lt, int key);
+template <class T, class X>
+void try_to_find(LookupTable<T, X>& lt, T key);
 
 void test_Customer();
+void test_String();
 
 //Uncomment the following function calls when ready to test template class LookupTable
 //void test_String();
@@ -31,7 +33,7 @@ int main()
 
  // Uncomment the following function calls when ready to test template class LookupTable
  // create and test a a lookup table of type <int, String>
- // test_String();
+ test_String();
  // system("clear");
 
  // Uncomment the following function calls when ready to test template class LookupTable
@@ -43,8 +45,8 @@ int main()
   return 0;
 }
 
-template <class T>
-void print(T& lt)
+template <class T, class X>
+void print(LookupTable<T, X>& lt)
 {
   if (lt.size() == 0)
     cout << "  Table is EMPTY.\n";
@@ -53,8 +55,8 @@ void print(T& lt)
   }
 }
 
-template <class T>
-void try_to_find(T& lt, int key)
+template <class T, class X>
+void try_to_find(LookupTable<T, X>& lt, T key)
 {
   lt.find(key);
   if (lt.cursor_ok())
@@ -91,12 +93,12 @@ void test_Customer()
     try_to_find(lt, 8000);
 
     // test Iterator
-    //LookupTable<int>::Iterator it = lt.begin();
-    //cout << "\nThe first node contains: " << *it << endl;
+    LookupTable<int, Customer>::Iterator it = lt.begin();
+    cout << "\nThe first node contains: " << *it << endl;
 
-    /*while (!it) {
+    while (!it) {
       cout <<++it << endl;
-    }  */  
+    }
 
     //test copying
     lt.go_to_first();
@@ -127,14 +129,14 @@ void test_Customer()
   }
 
 
-/* Uncomment and modify the following funciton when ready to test LookupTable<int,Mystring>
+/* Uncomment and modify the following funciton when ready to test LookupTable<int,Mystring> */
 
 void test_String()
 
   // creating lookuptable for Mystring objects
   {
     cout<<"\nCreating and testing LookupTable <int, Mystring> .....\n";
-    LookupTable lt <int, Mstring>;
+    LookupTable<int, Mystring> lt;
 
     // Insert using new keys.
 
@@ -142,13 +144,13 @@ void test_String()
     Mystring b("C++ is a powerful language for engineers but it's not easy.");
     Mystring c ("Winter 2004");
 
-    lt.insert(Pair<int, Mystring> (8002,a));
-    lt.insert(Pair<int, Mystring> (8001,b));
-    lt.insert(Pair<int, Mystring> (8004,c));
+    lt.insert(LookupTable<int, Mystring>::Pair (8002,a));
+    lt.insert(LookupTable<int, Mystring>::Pair (8001,b));
+    lt.insert(LookupTable<int, Mystring>::Pair (8004,c));
  
-    lt.insert(8002,a);
+   /* lt.insert(8002,a);
     lt.insert(8001,b);
-    lt.insert(8004,c);
+    lt.insert(8004,c);*/
     assert(lt.size() == 3);
     lt.remove(8004);
     assert(lt.size() == 2);
@@ -161,17 +163,17 @@ void test_String()
     try_to_find(lt, 8001);
     try_to_find(lt, 8000);
     // test Iterator
-    LookupTable::Iterator it = lt.begin();
-    cout <<"\nThe first node contains: " <<*it <<endl;
+    LookupTable<int, Mystring>::Iterator it = lt.begin();
+    //cout << "\nThe first node contains: " << *it <<endl;
 
-    while (!it) {
+    /*while (!it) {
       cout <<++it << endl;
-    }    
+    } */   
 
     //test copying
     lt.go_to_first();
     lt.step_fwd();
-    LookupTable  clt(lt);
+    LookupTable<int, Mystring>  clt(lt);
     assert(strcmp(clt.cursor_datum().c_str(),"I am an ENEL-409 student.")==0);
 
     cout << "\nTest copying: keys should be 8001, and 8002\n";
@@ -196,8 +198,6 @@ void test_String()
     cout << "PRESS RETURN TO CONTINUE.";
     cin.get();
   }
-
-*/
 
 
 /* Uncomment and modify the following funciton when ready to test LookupTable<int,int>
