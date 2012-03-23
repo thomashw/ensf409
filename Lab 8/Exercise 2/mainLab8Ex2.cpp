@@ -68,15 +68,15 @@ void test_Customer()
   //creating a lookup table for customer objects.
   {
     cout<<"\nCreating and testing LookupTable <int, Customer> .....\n";
-    LookupTable<int> lt;
+    LookupTable<int, Customer> lt;
     
     // Insert using new keys.
     Customer a("Joe", "Morrison", "11 St. Calgary.", "(403)-1111-123333");
     Customer b("Jack", "Lewis", "12 St. Calgary.", "(403)-1111-123334");
     Customer c("Tim", "Hardy", "13 St. Calgary.", "(403)-1111-123335");
-    lt.insert(LookupTable<int>::Pair (8002, a));
-    lt.insert(LookupTable<int>::Pair (8004,c));
-    lt.insert(LookupTable<int>::Pair (8001,b));
+    lt.insert(LookupTable<int, Customer>::Pair (8002, a));
+    lt.insert(LookupTable<int, Customer>::Pair (8004,c));
+    lt.insert(LookupTable<int, Customer>::Pair (8001,b));
  
     assert(lt.size() == 3);
     lt.remove(8004);
@@ -101,7 +101,7 @@ void test_Customer()
     //test copying
     lt.go_to_first();
     lt.step_fwd();
-    LookupTable<int> clt(lt);
+    LookupTable<int, Customer> clt(lt);
     assert(strcmp(clt.cursor_datum().getFname(),"Joe")==0);
 
     cout << "\nTest copying: keys should be 8001, and 8002\n";
