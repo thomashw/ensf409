@@ -77,7 +77,7 @@ public:
     T& operator =(const T& rhs);
     ~LookupTable();
 
-    T& begin();
+    LookupTable& begin();
 
     int size() const;
   // PROMISES: Returns number of keys in the table.
@@ -134,7 +134,15 @@ public:
 
   // friend  ostream& operator << <K,D> (ostream& os,const LookupTable<K,D>& lt);
 
-  friend ostream& operator << <>(ostream& os, const LookupTable<T>& lt);
+    friend ostream& operator << (ostream& os, const LookupTable<T>& lt)
+    {
+      if (lt.cursor_ok())
+        os <<lt.cursor_key() << "  " << lt.cursor_datum();
+      else
+        os<<"Not Found.";
+
+      return os;
+    }
 
   private:
     int sizeM;
@@ -152,7 +160,7 @@ public:
 #endif
 
 template <class T>
-  T& LookupTable<T>::begin(){
+  LookupTable<T>& LookupTable<T>::begin(){
     cursorM = headM;
     return *this;
   }
@@ -358,17 +366,6 @@ void LookupTable<T>::copy(const T& source)
      find(p->pairM.key);
  }
 
-}
-
-template <class T>
-ostream& operator << (ostream& os, const LookupTable<T>& lt)
-{
-  if (lt.cursor_ok())
-    os <<lt.cursor_key() << "  " << lt.cursor_datum();
-  else
-    os<<"Not Found.";
-
-  return os;
 }
 
 template <class T>
