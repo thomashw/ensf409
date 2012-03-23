@@ -17,10 +17,7 @@ void try_to_find(LookupTable<T, X>& lt, T key);
 
 void test_Customer();
 void test_String();
-
-//Uncomment the following function calls when ready to test template class LookupTable
-//void test_String();
-//void test_integer();
+void test_integer();
 
 int main()
 {
@@ -38,7 +35,7 @@ int main()
 
  // Uncomment the following function calls when ready to test template class LookupTable
  // create and test a a lookup table of type <int, int>
- // test_integer();
+ test_integer();
 
   cout<<"\n\nProgram terminated successfully.\n\n";
 
@@ -200,7 +197,7 @@ void test_String()
   }
 
 
-/* Uncomment and modify the following funciton when ready to test LookupTable<int,int>
+/* Uncomment and modify the following funciton when ready to test LookupTable<int,int> */
 
 void test_integer()
 
@@ -208,12 +205,12 @@ void test_integer()
 
   {
     cout<<"\nCreating and testing LookupTable <int, int> .....\n";
-    LookupTable  lt<int, int>;
+    LookupTable<int, int>  lt;
 
     // Insert using new keys.
-    lt.insert(Pair<int, int>(8002,9999));
-    lt.insert(Pair<int, int>(8001,8888));
-    lt.insert(Pair<int, int>(8004,8888));
+    lt.insert(LookupTable<int, int>::Pair(8002,9999));
+    lt.insert(LookupTable<int, int>::Pair(8001,8888));
+    lt.insert(LookupTable<int, int>::Pair(8004,8888));
     assert(lt.size() == 3);
     lt.remove(8004);
     assert(lt.size() == 2);
@@ -227,7 +224,7 @@ void test_integer()
     try_to_find(lt, 8000);
 
     // test Iterator
-    LookupTable::Iterator it = lt.begin();
+    LookupTable<int, int>::Iterator it = lt.begin();
 
     while (!it) {
       cout <<++it << endl;
@@ -237,7 +234,7 @@ void test_integer()
     //test copying
     lt.go_to_first();
     lt.step_fwd();
-    LookupTable clt(lt);
+    LookupTable<int, int> clt(lt);
     assert(clt.cursor_datum()== 9999);
 
     cout << "\nTest copying: keys should be 8001, and 8002\n";
@@ -259,4 +256,3 @@ void test_integer()
     cout << "***----Finished Lab 4 tests on <int> <int>-----***\n";
     
   }
-*/
