@@ -1,12 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:layout_width="194dp"
+        android:layout_height="20dp"
+        android:layout_x="66dp"
+        android:layout_y="53dp"
+        android:text="@string/tempEntry" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/tempCvalue"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="54dp"
+        android:layout_x="140dp"
+        android:layout_y="83dp"
+        android:background="#ffffFf"
+        android:ems="10"
+        android:inputType="none"
+        android:textColor="#000000"
+        android:textCursorDrawable="@null"
+        android:textSize="10sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:layout_x="100dp"
+        android:layout_y="81dp"
+        android:text="@string/celsius" />
+
+    <EditText
+        android:id="@+id/tempFvalue"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="54dp"
+        android:layout_x="140dp"
+        android:layout_y="106dp"
+        android:background="#ffffFf"
+        android:ems="10"
+        android:inputType="none"
+        android:textColor="#000000"
+        android:textCursorDrawable="@null"
+        android:textSize="10sp" />
+
+    <TextView
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:layout_x="101dp"
+        android:layout_y="103dp"
+        android:text="@string/fahrenheit" />
+
+    <TextView
+        android:layout_width="58dp"
+        android:layout_height="wrap_content"
+        android:layout_x="70dp"
+        android:layout_y="146dp"
+        android:text="@string/result" />
+
+    <EditText
+        android:id="@+id/tempResult"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="54dp"
+        android:layout_x="140dp"
+        android:layout_y="150dp"
+        android:background="#ffffFf"
+        android:ems="10"
+        android:inputType="none"
+        android:textColor="#000000"
+        android:textCursorDrawable="@null"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="196dp"
+        android:text="@string/calculateButton" />
+
+</AbsoluteLayout>

@@ -3,8 +3,10 @@
 
     <string name="hello">Hello World, TemperatureCalculatorActivity!</string>
     <string name="app_name">Temperature Calculator</string>
-    <string name="tempEntry">Please Enter a Temperature in Celsius</string>
-    <string name="result">Result</string>
+    <string name="tempEntry">Please Enter a Temperature</string>
+    <string name="result">Result:</string>
     <string name="calculateButton">Calculate</string>
+    <string name="celsius">C:</string>
+    <string name="fahrenheit">F:</string>
 
 </resources>
