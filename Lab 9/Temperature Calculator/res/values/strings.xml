@@ -5,10 +5,8 @@
     <string name="app_name">Temperature Calculator</string>
     <string name="tempEntry">Please Enter a Temperature:</string>
     <string name="result">Conversion:</string>
-    <string name="calculateButton">Calculate</string>
-    <string name="celsius">C:</string>
-    <string name="fahrenheit">F:</string>
     <string name="calcutateCelsius">Convert to Celsius</string>
     <string name="calculateFarenheit">Convert to Farenheit</string>
+    <string name="unit">Please Enter a Unit:</string>
 
 </resources>
