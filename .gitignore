@@ -17,7 +17,7 @@ Debug
 Lab 7/Exercise 2/myprog
 *.o
 *.DS_Store
-
+*.*~
 Lab 7/Part II/myprog
 
 Lab 7/Part III/myprog
