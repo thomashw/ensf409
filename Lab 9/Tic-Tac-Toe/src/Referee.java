@@ -26,17 +26,12 @@ public class Referee
 		player2 = null;
 	}
 
-	public Player getPlayer1()
+	public void playGame() throws IOException, PlayersNotInitializedException
 	{
-		return player1;
+		initiateGame();
 	}
 
-	public Player getPlayer2()
-	{
-		return player2;
-	}
-
-	public void initiateGame() throws IOException, PlayersNotInitializedException
+	private void initiateGame() throws IOException, PlayersNotInitializedException
 	{
 		System.out.println( "Welcome to Tic-Tac-Toe" );
 		System.out.println( "Created by: Thomas Hewton-Waters & Andrew Winkler" );
@@ -74,12 +69,11 @@ public class Referee
 				player2 = new Player( null, Player.PlayerType.PlayerTypeComputerAidedHuman );
 				break;
 			default:
-				System.out.println( "Incorrect selection made." );
-				return;
+				break;
 		}
 
 		if( player1 == null || player2 == null )
-			throw new PlayersNotInitializedException("");
+			throw new PlayersNotInitializedException( "An incorrect opponent selection was made." );
 	}
 
 	public void drawGameBoard()
@@ -102,6 +96,6 @@ public class Referee
 	public static void main( String[] args ) throws IOException, PlayersNotInitializedException
 	{
 		Referee ref = new Referee();
-		ref.initiateGame();
+		ref.playGame();
 	}
 }
