@@ -32,6 +32,21 @@ public class Referee
 
 	public void playGame() throws IOException, PlayersNotInitializedException
 	{
+		System.out.println( "\n\nWelcome to Tic-Tac-Toe" );
+		System.out.println( "Created by: Thomas Hewton-Waters & Andrew Winkler" );
+
+		System.out.println( "\nPlease select from the following options:" );
+		System.out.println( "1. Play Tic-Tac-Toe" );
+		System.out.println( "2. Quit" );
+
+		BufferedReader in = new BufferedReader( new InputStreamReader( System.in ) );
+		String str = in.readLine();
+
+		if( Integer.parseInt( str ) == 2 ) {
+			System.out.println( "Bye!" );
+			return;
+		}
+
 		initiateGame();
 
 		/* Make sure both players have been initialized */
@@ -90,15 +105,12 @@ public class Referee
 
 	private void initiateGame() throws IOException, PlayersNotInitializedException
 	{
-		System.out.println( "\n\nWelcome to Tic-Tac-Toe" );
-		System.out.println( "Created by: Thomas Hewton-Waters & Andrew Winkler" );
-
-		System.out.print( "\nPlease enter your name: " );
+		System.out.print( "\nGreat! Please enter your name: " );
 
 		BufferedReader in = new BufferedReader( new InputStreamReader( System.in ) );
-		String userName = in.readLine();
-
-		player1 = new Player( userName, Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeX );
+		String str = in.readLine();
+		
+		player1 = new Player( str, Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeX );
 		
 		System.out.println( "\nPlease make a selection for your opponent from the following list:" );
 		System.out.println( "1. Human Player" );
