@@ -25,20 +25,32 @@ public class Referee
 		if( player1 == null || player2 == null )
 			throw new PlayersNotInitializedException( "Player 1 and Player 2 were not initialized correctly." );
 
-		/* Draw the game board */
-		drawScreen();
+		boolean winner = false;
+		while( winner == false ) {
+			/* Draw the updated game board */
+			drawScreen();
 
-		while( true ) {
+			/* Receive a move from player 1 */
 			receiveMove( player1 );
+
+			/* Receive a move from player 2 */
 			receiveMove( player2 );
+
+			/* Check if either player has won */
+			winner = checkForWinner();
 		}
 	}
 
-	private void receiveMove( Player player )
+	private void receiveMove( Player player ) throws IOException
 	{
 		Coordinate coord = player.calculateMove();
 
 		gameBoard[coord.col][coord.row] = player.getSquareType();
+	}
+
+	private boolean checkForWinner()
+	{
+		return false;
 	}
 
 	private void initiateGame() throws IOException, PlayersNotInitializedException
@@ -64,7 +76,7 @@ public class Referee
 
 		switch ( playerSelection ) {
 			case 1:
-				player2 = new Player( null, Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeO );
+				player2 = new Player( "Player 2", Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeO );
 				break;
 			case 2:
 				player2 = new Player( null, Player.PlayerType.PlayerTypeComputerRandom, SquareType.SquareTypeO );

@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class Player
 {
 	public enum PlayerType
@@ -25,7 +27,7 @@ public class Player
 		return squareType;
 	}
 
-	public Coordinate calculateMove()
+	public Coordinate calculateMove() throws IOException
 	{
 		Coordinate coord = null;
 
@@ -58,9 +60,18 @@ public class Player
 		return coord;
 	}
 
-	private Coordinate calculateMoveHuman()
+	private Coordinate calculateMoveHuman() throws IOException
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
+
+		BufferedReader in = new BufferedReader( new InputStreamReader( System.in ) );
+
+		System.out.println( "\n" + name + ", please enter your next move." );
+		System.out.print( "row: " );
+		int row = Integer.parseInt( in.readLine() );
+
+		System.out.print( "col: " );
+		int col = Integer.parseInt( in.readLine() );
 
 		return coord;
 	}
