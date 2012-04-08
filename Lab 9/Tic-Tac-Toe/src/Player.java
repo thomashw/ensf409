@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Random;
 
 public class Player
 {
@@ -78,12 +79,15 @@ public class Player
 		return new Coordinate( row, col );
 	}
 
-	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
+	/* Generates a random row and column */
 	private Coordinate calculateMoveComputerRandom()
 	{
-		Coordinate coord = new Coordinate( 0, 0 );
+		Random rand = new Random();
 
-		return coord;
+		int row = rand.nextInt(3);
+		int col = rand.nextInt(3);
+
+		return new Coordinate( row, col );
 	}
 
 	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
