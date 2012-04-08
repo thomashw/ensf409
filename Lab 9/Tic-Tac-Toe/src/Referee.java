@@ -10,6 +10,7 @@ public class Referee
 	{
 		gameBoard = new SquareType[3][3];
 
+		/* Initiate all squares to be empty at the beginning */
 		for( int i = 0; i < SquareType.SquareTypeCount.ordinal(); i++ )
 			for( int j = 0; j < SquareType.SquareTypeCount.ordinal(); j++ )
 				gameBoard[i][j] = SquareType.SquareTypeEmpty;
@@ -22,32 +23,41 @@ public class Referee
 	{
 		initiateGame();
 
+		/* Make sure both players have been initialized */
 		if( player1 == null || player2 == null )
 			throw new PlayersNotInitializedException( "Player 1 and Player 2 were not initialized correctly." );
 
+		/* Play until there is a winner */
 		boolean winner = false;
 		while( winner == false ) {
+
 			/* Draw the updated game board */
 			drawScreen();
 
 			/* Receive a move from player 1 */
 			receiveMove( player1 );
 
+			/* Check if player 1 won */
+			winner = checkForWinner();
+
 			/* Receive a move from player 2 */
 			receiveMove( player2 );
 
-			/* Check if either player has won */
+			/* Check if player 2 won */
 			winner = checkForWinner();
 		}
 	}
 
 	private void receiveMove( Player player ) throws IOException
 	{
+		/* Get the player's next coordinate */
 		Coordinate coord = player.calculateMove();
 
+		/* Update the game board */
 		gameBoard[coord.col][coord.row] = player.getSquareType();
 	}
 
+	/* WARNING: NEED TO ACTUALLY CHECK */
 	private boolean checkForWinner()
 	{
 		return false;
@@ -74,6 +84,7 @@ public class Referee
 
 		int playerSelection = Integer.parseInt( in.readLine() );
 
+		/* Initialize player 2 based on who player 1's selection of who to play */
 		switch ( playerSelection ) {
 			case 1:
 				player2 = new Player( "Player 2", Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeO );
@@ -94,6 +105,7 @@ public class Referee
 				break;
 		}
 
+		/* Make sure both players were initialized */
 		if( player1 == null || player2 == null )
 			throw new PlayersNotInitializedException( "An incorrect opponent selection was made." );
 	}
@@ -103,6 +115,7 @@ public class Referee
 		drawGameBoard();
 	}
 
+	/* WARNING: NEED TO ACTUALLY DRAW X'S AND O'S */
 	private void drawGameBoard()
 	{
 		System.out.println( "\n    Game Board");

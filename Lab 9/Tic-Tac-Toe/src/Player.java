@@ -13,6 +13,8 @@ public class Player
 
 	private String name;
 	private PlayerType playerType;
+
+	/* Holds whether the player is X's or O's */
 	private SquareType squareType;
 
 	public Player( String name, PlayerType aPlayerType, SquareType aSquareType )
@@ -27,6 +29,7 @@ public class Player
 		return squareType;
 	}
 
+	/* Calculate's the move for any type of player (human or computer) */
 	public Coordinate calculateMove() throws IOException
 	{
 		Coordinate coord = null;
@@ -60,6 +63,7 @@ public class Player
 		return coord;
 	}
 
+	/* Takes input from the terminal for the person's next move */
 	private Coordinate calculateMoveHuman() throws IOException
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
@@ -76,6 +80,7 @@ public class Player
 		return coord;
 	}
 
+	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
 	private Coordinate calculateMoveComputerRandom()
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
@@ -83,6 +88,7 @@ public class Player
 		return coord;
 	}
 
+	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
 	private Coordinate calculateMoveComputerBlocking()
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
@@ -90,6 +96,7 @@ public class Player
 		return coord;
 	}
 
+	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
 	private Coordinate calculateMoveComputerSmart()
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
@@ -97,6 +104,7 @@ public class Player
 		return coord;
 	}
 
+	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
 	private Coordinate calculateMoveComputerAidedHuman()
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
