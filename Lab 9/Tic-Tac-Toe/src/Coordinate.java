@@ -1,7 +1,7 @@
 public class Coordinate
 {
-	int row;
-	int col;
+	public int row;
+	public int col;
 
 	public Coordinate( int aRow, int aCol )
 	{

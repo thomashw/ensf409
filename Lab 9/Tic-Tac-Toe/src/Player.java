@@ -10,19 +10,26 @@ public class Player
 	};
 
 	private String name;
-	private PlayerType type;
+	private PlayerType playerType;
+	private SquareType squareType;
 
-	public Player( String name, PlayerType type )
+	public Player( String name, PlayerType aPlayerType, SquareType aSquareType )
 	{
 		this.name = name;
-		this.type = type;
+		this.playerType = aPlayerType;
+		this.squareType = aSquareType;
+	}
+
+	public SquareType getSquareType()
+	{
+		return squareType;
 	}
 
 	public Coordinate calculateMove()
 	{
 		Coordinate coord = null;
 
-		switch( type )
+		switch( playerType )
 		{
 			case PlayerTypeHuman:
 			coord = calculateMoveHuman();
