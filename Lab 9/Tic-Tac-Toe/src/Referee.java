@@ -2,6 +2,25 @@ import java.io.*;
 
 public class Referee
 {
+	public enum SquareType
+	{
+		SquareTypeEmpty,
+		SquareTypeX,
+		SquareTypeO,
+		SquareTypeCount
+	};
+
+	SquareType[][] gameBoard;
+
+	public Referee()
+	{
+		gameBoard = new SquareType[3][3];
+
+		for( int i = 0; i < SquareType.SquareTypeCount.ordinal(); i++ )
+			for( int j = 0; j < SquareType.SquareTypeCount.ordinal(); j++ )
+				gameBoard[i][j] = SquareType.SquareTypeEmpty;
+	}
+
 	public void initiateGame() throws IOException
 	{
 		System.out.println( "Welcome to Tic-Tac-Toe" );
@@ -44,6 +63,23 @@ public class Referee
 				System.out.println( "Incorrect selection made." );
 				return;
 		}
+	}
+
+	public void drawGameBoard()
+	{
+		System.out.println( "+-----+-----+-----+" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "+-----+-----+-----+" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "+-----+-----+-----+" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "|     |     |     |" );
+		System.out.println( "+-----+-----+-----+" );
 	}
 
 	public static void main( String[] args ) throws IOException
