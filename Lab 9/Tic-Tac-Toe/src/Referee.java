@@ -10,7 +10,9 @@ public class Referee
 		SquareTypeCount
 	};
 
-	SquareType[][] gameBoard;
+	private SquareType[][] gameBoard;
+	private Player player1;
+	private Player player2;
 
 	public Referee()
 	{
@@ -19,9 +21,22 @@ public class Referee
 		for( int i = 0; i < SquareType.SquareTypeCount.ordinal(); i++ )
 			for( int j = 0; j < SquareType.SquareTypeCount.ordinal(); j++ )
 				gameBoard[i][j] = SquareType.SquareTypeEmpty;
+
+		player1 = null;
+		player2 = null;
 	}
 
-	public void initiateGame() throws IOException
+	public Player getPlayer1()
+	{
+		return player1;
+	}
+
+	public Player getPlayer2()
+	{
+		return player2;
+	}
+
+	public void initiateGame() throws IOException, PlayersNotInitializedException
 	{
 		System.out.println( "Welcome to Tic-Tac-Toe" );
 		System.out.println( "Created by: Thomas Hewton-Waters & Andrew Winkler" );
@@ -31,7 +46,7 @@ public class Referee
 		BufferedReader in = new BufferedReader( new InputStreamReader( System.in ) );
 		String userName = in.readLine();
 
-		Player player1 = new Player( userName, Player.PlayerType.PlayerTypeHuman );
+		player1 = new Player( userName, Player.PlayerType.PlayerTypeHuman );
 		
 		System.out.println( "\nPlease make a selection for your opponent from the following list:" );
 		System.out.println( "1. Human Player" );
@@ -41,7 +56,6 @@ public class Referee
 		System.out.println( "5. Computer-Aided Human Player" );
 
 		int playerSelection = Integer.parseInt( in.readLine() );
-		Player player2 = null;
 
 		switch ( playerSelection ) {
 			case 1:
@@ -63,6 +77,9 @@ public class Referee
 				System.out.println( "Incorrect selection made." );
 				return;
 		}
+
+		if( player1 == null || player2 == null )
+			throw new PlayersNotInitializedException("");
 	}
 
 	public void drawGameBoard()
@@ -82,7 +99,7 @@ public class Referee
 		System.out.println( "+-----+-----+-----+" );
 	}
 
-	public static void main( String[] args ) throws IOException
+	public static void main( String[] args ) throws IOException, PlayersNotInitializedException
 	{
 		Referee ref = new Referee();
 		ref.initiateGame();
