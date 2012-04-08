@@ -3,6 +3,7 @@ import java.io.*;
 public class Referee
 {
 	private SquareType[][] gameBoard;
+	private char[][] gameBoardChars;
 	private Player player1;
 	private Player player2;
 
@@ -11,9 +12,19 @@ public class Referee
 		gameBoard = new SquareType[3][3];
 
 		/* Initiate all squares to be empty at the beginning */
-		for( int i = 0; i < SquareType.SquareTypeCount.ordinal(); i++ )
-			for( int j = 0; j < SquareType.SquareTypeCount.ordinal(); j++ )
+		for( int i = 0; i < SquareType.SquareTypeCount.ordinal(); i++ ) {
+			for( int j = 0; j < SquareType.SquareTypeCount.ordinal(); j++ ) {
 				gameBoard[i][j] = SquareType.SquareTypeEmpty;
+			}
+		}
+
+		gameBoardChars = new char[3][3];
+
+		for( int i = 0; i < SquareType.SquareTypeCount.ordinal(); i++ ) {
+			for( int j = 0; j < SquareType.SquareTypeCount.ordinal(); j++ ) {
+				gameBoardChars[i][j] = ' ';
+			}
+		}
 
 		player1 = null;
 		player2 = null;
@@ -29,6 +40,7 @@ public class Referee
 
 		/* Play until there is a winner */
 		boolean winner = false;
+
 		while( winner == false ) {
 
 			/* Draw the updated game board */
@@ -54,7 +66,20 @@ public class Referee
 		Coordinate coord = player.calculateMove();
 
 		/* Update the game board */
-		gameBoard[coord.col][coord.row] = player.getSquareType();
+		if( gameBoard[coord.row][coord.col] == SquareType.SquareTypeEmpty ) {
+			gameBoard[coord.row][coord.col] = player.getSquareType();
+
+			switch ( player.getSquareType() ) {
+				case SquareTypeX:
+				gameBoardChars[coord.row][coord.col] = 'X';
+				break;
+				case SquareTypeO:
+				gameBoardChars[coord.row][coord.col] = 'O';
+				break;
+				default:
+				break;
+			}
+		}
 	}
 
 	/* WARNING: NEED TO ACTUALLY CHECK */
@@ -87,22 +112,22 @@ public class Referee
 		/* Initialize player 2 based on who player 1's selection of who to play */
 		switch ( playerSelection ) {
 			case 1:
-				player2 = new Player( "Player 2", Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeO );
-				break;
+			player2 = new Player( "Player 2", Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeO );
+			break;
 			case 2:
-				player2 = new Player( null, Player.PlayerType.PlayerTypeComputerRandom, SquareType.SquareTypeO );
-				break;
+			player2 = new Player( null, Player.PlayerType.PlayerTypeComputerRandom, SquareType.SquareTypeO );
+			break;
 			case 3:
-				player2 = new Player( null, Player.PlayerType.PlayerTypeComputerBlocking, SquareType.SquareTypeO );
-				break;
+			player2 = new Player( null, Player.PlayerType.PlayerTypeComputerBlocking, SquareType.SquareTypeO );
+			break;
 			case 4:
-				player2 = new Player( null, Player.PlayerType.PlayerTypeComputerSmart, SquareType.SquareTypeO );
-				break;
+			player2 = new Player( null, Player.PlayerType.PlayerTypeComputerSmart, SquareType.SquareTypeO );
+			break;
 			case 5:
-				player2 = new Player( null, Player.PlayerType.PlayerTypeComputerAidedHuman, SquareType.SquareTypeO );
-				break;
+			player2 = new Player( null, Player.PlayerType.PlayerTypeComputerAidedHuman, SquareType.SquareTypeO );
+			break;
 			default:
-				break;
+			break;
 		}
 
 		/* Make sure both players were initialized */
@@ -115,23 +140,24 @@ public class Referee
 		drawGameBoard();
 	}
 
-	/* WARNING: NEED TO ACTUALLY DRAW X'S AND O'S */
+	/* Draws the game board with X's and O's */
 	private void drawGameBoard()
 	{
 		System.out.println( "\n    Game Board");
-		System.out.println( "+-----+-----+-----+" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "+-----+-----+-----+" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "+-----+-----+-----+" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "|     |     |     |" );
-		System.out.println( "+-----+-----+-----+\n" );
+		System.out.println( "    0     1     2");
+		System.out.println( " +-----+-----+-----+" );
+		System.out.println( " |     |     |     |" );
+		System.out.println( "0|  " + gameBoardChars[0][0] + "  |  " + gameBoardChars[0][1] + "  |  " + gameBoardChars[0][2] + "  |" );
+		System.out.println( " |     |     |     |" );
+		System.out.println( " +-----+-----+-----+" );
+		System.out.println( " |     |     |     |" );
+		System.out.println( "1|  " + gameBoardChars[1][0] + "  |  " + gameBoardChars[1][1] + "  |  " + gameBoardChars[1][2] + "  |" );
+		System.out.println( " |     |     |     |" );
+		System.out.println( " +-----+-----+-----+" );
+		System.out.println( " |     |     |     |" );
+		System.out.println( "2|  " + gameBoardChars[2][0] + "  |  " + gameBoardChars[2][1] + "  |  " + gameBoardChars[2][2] + "  |" );
+		System.out.println( " |     |     |     |" );
+		System.out.println( " +-----+-----+-----+\n" );
 	}
 
 	public static void main( String[] args ) throws IOException, PlayersNotInitializedException

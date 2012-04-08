@@ -66,8 +66,6 @@ public class Player
 	/* Takes input from the terminal for the person's next move */
 	private Coordinate calculateMoveHuman() throws IOException
 	{
-		Coordinate coord = new Coordinate( 0, 0 );
-
 		BufferedReader in = new BufferedReader( new InputStreamReader( System.in ) );
 
 		System.out.println( "\n" + name + ", please enter your next move." );
@@ -77,7 +75,7 @@ public class Player
 		System.out.print( "col: " );
 		int col = Integer.parseInt( in.readLine() );
 
-		return coord;
+		return new Coordinate( row, col );
 	}
 
 	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
