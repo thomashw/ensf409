@@ -94,6 +94,8 @@ public class Referee
 				default:
 				break;
 			}
+		} else {
+			System.out.println( "Someone already went there! You lose a turn." );
 		}
 	}
 
@@ -109,7 +111,7 @@ public class Referee
 
 		BufferedReader in = new BufferedReader( new InputStreamReader( System.in ) );
 		String str = in.readLine();
-		
+
 		player1 = new Player( str, Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeX );
 		
 		System.out.println( "\nPlease make a selection for your opponent from the following list:" );
