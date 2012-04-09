@@ -75,11 +75,26 @@ public class Player
 		BufferedReader in = new BufferedReader( new InputStreamReader( System.in ) );
 
 		System.out.println( "\n" + name + ", please enter your next move." );
-		System.out.print( "row: " );
-		int row = Integer.parseInt( in.readLine() );
+		
+		int row, col;
 
-		System.out.print( "col: " );
-		int col = Integer.parseInt( in.readLine() );
+		while( true ) {
+			System.out.print( "row: " );
+			row = Integer.parseInt( in.readLine() );
+			if( row == 0 || row == 1 || row == 2 )
+				break;
+			else
+				System.out.println( "\nIncorrect row value, please try again" );
+		}
+
+		while( true ) {
+			System.out.print( "col: " );
+			col = Integer.parseInt( in.readLine() );
+			if( col == 0 || col == 1 || col == 2 )
+				break;
+			else
+				System.out.println( "\nIncorrect column value, please try again" );				
+		}
 
 		return new Coordinate( row, col );
 	}

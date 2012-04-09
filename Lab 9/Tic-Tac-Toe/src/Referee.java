@@ -63,7 +63,6 @@ public class Referee
 			/* Play until there is a winner */
 			boolean winner = false;
 
-
 			/* Draw the blank game board */
 			drawScreen();
 
@@ -227,14 +226,25 @@ public class Referee
 
 		player1 = new Player( str, Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeX );
 		
-		System.out.println( "\nPlease make a selection for your opponent from the following list:" );
-		System.out.println( "1. Human Player" );
-		System.out.println( "2. Computer Random Player" );
-		System.out.println( "3. Computer Blocking Player" );
-		System.out.println( "4. Computer Smart Player" );
-		System.out.println( "5. Computer-Aided Human Player" );
+		int playerSelection;
 
-		int playerSelection = Integer.parseInt( in.readLine() );
+		while( true ) {
+
+			System.out.println( "\nPlease make a selection for your opponent from the following list:" );
+			System.out.println( "1. Human Player" );
+			System.out.println( "2. Computer Random Player" );
+			System.out.println( "3. Computer Blocking Player" );
+			System.out.println( "4. Computer Smart Player" );
+			System.out.println( "5. Computer-Aided Human Player" ); 
+
+			playerSelection = Integer.parseInt( in.readLine() );
+
+			if( playerSelection == 1 || playerSelection == 2 || playerSelection == 3 || playerSelection == 4 || playerSelection == 5 )
+				break;
+			else
+				System.out.println( "\nIncorrect selection, please try again" );
+		}
+
 
 		/* Initialize player 2 based on who player 1's selection of who to play */
 		switch ( playerSelection ) {
