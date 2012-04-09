@@ -67,6 +67,9 @@ public class Referee
 			/* Check if player 1 won */
 			winner = checkForWinner();
 
+			/* Draw the updated game board */
+			drawScreen();
+
 			/* Receive a move from player 2 */
 			receiveMove( player2 );
 
