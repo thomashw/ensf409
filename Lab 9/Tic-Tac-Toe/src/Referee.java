@@ -62,7 +62,7 @@ public class Referee
 
 
 		while( winner == false ) {
-			
+
 			/* Receive a move from player 1 */
 			receiveMove( player1 );
 
@@ -109,7 +109,6 @@ public class Referee
 		}
 	}
 
-	/* WARNING: NEED TO ACTUALLY CHECK */
 	private boolean checkForWinner()
 	{
 		/* Checking if Player 1 has won */

@@ -95,27 +95,64 @@ public class Player
 		return new Coordinate( row, col );
 	}
 
-	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
+	/* Check for blocking first, if not then generate random */
 	private Coordinate calculateMoveComputerBlocking()
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
 
-		return coord;
+		if( checkForBlocking( coord )  )
+			return coord;
+
+		else {
+			coord = calculateMoveComputerRandom();
+			return coord;
+		}
 	}
 
-	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
+	/* Check for win first, then for blocking, if not then generate random */
 	private Coordinate calculateMoveComputerSmart()
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
 
-		return coord;
+		if( checkForWin( coord ) )
+			return coord;
+		
+		else if( checkForBlocking( coord ) )
+			return coord;
+
+		else {
+			coord = calculateMoveComputerRandom();
+			return coord;
+		}
 	}
 
-	/* WARNING: NEED TO IMPLEMENT ALGORITHM */
-	private Coordinate calculateMoveComputerAidedHuman()
+	/* Check for blocking first, if not then lets user pick next move */
+	private Coordinate calculateMoveComputerAidedHuman() throws IOException
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
+		
+		if( checkForBlocking( coord )  )
+			return coord;
 
-		return coord;
+		else {
+			coord = calculateMoveHuman();
+			return coord;
+		}
+	}
+
+	private boolean checkForBlocking( Coordinate coord )
+	{
+		coord.row = 0;
+		coord.col = 0;
+
+		return true;
+	}
+
+	private boolean checkForWin( Coordinate coord )
+	{
+		coord.row = 0;
+		coord.col = 0;
+
+		return true;
 	}
 }
