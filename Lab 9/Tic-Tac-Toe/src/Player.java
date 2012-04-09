@@ -149,10 +149,9 @@ public class Player
 		else
 			squareTypeWin = SquareType.SquareTypeO;
 
-		for( int i = 0; i < 3; i++ )
-			for( int j = 0; j < 3; j++ )
+		for( int i = 0; i < 3; i++ ) {
+			for( int j = 0; j < 3; j++ ) {
 				if( gameBoard[i][j] == SquareType.SquareTypeEmpty ) {
-
 					/* Case 1 */
 					if( i== 0 && j == 0 ) {
 						if( gameBoard[0][1] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
@@ -218,6 +217,7 @@ public class Player
 							coord.col = j;
 							return true;
 						}
+					}
 
 
 					/* Case 5 */
@@ -313,7 +313,8 @@ public class Player
 
 				}
 			}
-			
+		}
+
 		return false;
 	}
 
@@ -321,8 +322,8 @@ public class Player
 	{
 		SquareType squareTypeWin = this.squareType;
 
-		for( int i = 0; i < 3; i++ )
-			for( int j = 0; j < 3; j++ )
+		for( int i = 0; i < 3; i++ ) {
+			for( int j = 0; j < 3; j++ ) {
 				if( gameBoard[i][j] == SquareType.SquareTypeEmpty ) {
 
 					/* Case 1 */
@@ -390,6 +391,7 @@ public class Player
 							coord.col = j;
 							return true;
 						}
+					}
 
 
 					/* Case 5 */
@@ -485,6 +487,7 @@ public class Player
 
 				}
 			}
+		}
 
 		return false;
 	}
