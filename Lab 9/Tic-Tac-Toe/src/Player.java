@@ -207,7 +207,7 @@ public class Player
 
 					/* Case 4 */
 					if( i== 1 && j == 0 ) {
-						if( gameBoard[0][0] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[2][0] == squareTypeWin ) {
 							coord.row = i;
 							coord.col = j;
 							return true;
