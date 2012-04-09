@@ -57,9 +57,8 @@ public class Referee
 		boolean winner = false;
 
 
-		/* Draw the updated game board */
+		/* Draw the blank game board */
 		drawScreen();
-
 
 		while( winner == false ) {
 
@@ -88,7 +87,7 @@ public class Referee
 	private void receiveMove( Player player ) throws IOException
 	{
 		/* Get the player's next coordinate */
-		Coordinate coord = player.calculateMove();
+		Coordinate coord = player.calculateMove( gameBoard );
 
 		/* Update the game board */
 		if( gameBoard[coord.row][coord.col] == SquareType.SquareTypeEmpty ) {
@@ -111,7 +110,7 @@ public class Referee
 
 	private boolean checkForWinner()
 	{
-		/* Checking if Player 1 has won */
+		/* Check if Player 1 has won */
 
 		if( gameBoardChars[0][0] == 'X' && gameBoardChars[0][1] == 'X' && gameBoardChars[0][2] == 'X' ) {
 			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
@@ -153,7 +152,7 @@ public class Referee
 			return true;
 		}
 
-		/* Checking if Player 2 has won */
+		/* Check if Player 2 has won */
 
 		if( gameBoardChars[0][0] == 'O' && gameBoardChars[0][1] == 'O' && gameBoardChars[0][2] == 'O' ) {
 			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
@@ -222,16 +221,16 @@ public class Referee
 			player2 = new Player( "Player 2", Player.PlayerType.PlayerTypeHuman, SquareType.SquareTypeO );
 			break;
 			case 2:
-			player2 = new Player( null, Player.PlayerType.PlayerTypeComputerRandom, SquareType.SquareTypeO );
+			player2 = new Player( "Random Computer", Player.PlayerType.PlayerTypeComputerRandom, SquareType.SquareTypeO );
 			break;
 			case 3:
-			player2 = new Player( null, Player.PlayerType.PlayerTypeComputerBlocking, SquareType.SquareTypeO );
+			player2 = new Player( "Blocking Computer", Player.PlayerType.PlayerTypeComputerBlocking, SquareType.SquareTypeO );
 			break;
 			case 4:
-			player2 = new Player( null, Player.PlayerType.PlayerTypeComputerSmart, SquareType.SquareTypeO );
+			player2 = new Player( "Smart Computer", Player.PlayerType.PlayerTypeComputerSmart, SquareType.SquareTypeO );
 			break;
 			case 5:
-			player2 = new Player( null, Player.PlayerType.PlayerTypeComputerAidedHuman, SquareType.SquareTypeO );
+			player2 = new Player( "Player 2 (Aided)", Player.PlayerType.PlayerTypeComputerAidedHuman, SquareType.SquareTypeO );
 			break;
 			default:
 			break;

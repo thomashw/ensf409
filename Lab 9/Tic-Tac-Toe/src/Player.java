@@ -36,7 +36,7 @@ public class Player
 	}
 
 	/* Calculate's the move for any type of player (human or computer) */
-	public Coordinate calculateMove() throws IOException
+	public Coordinate calculateMove( SquareType[][] gameBoard ) throws IOException
 	{
 		Coordinate coord = null;
 
@@ -51,15 +51,15 @@ public class Player
 			break;
 
 			case PlayerTypeComputerBlocking:
-			coord = calculateMoveComputerBlocking();
+			coord = calculateMoveComputerBlocking( gameBoard );
 			break;
 
 			case PlayerTypeComputerSmart:
-			coord = calculateMoveComputerSmart();
+			coord = calculateMoveComputerSmart( gameBoard );
 			break;
 
 			case PlayerTypeComputerAidedHuman:
-			coord = calculateMoveComputerAidedHuman();
+			coord = calculateMoveComputerAidedHuman( gameBoard );
 			break;
 
 			default:
@@ -96,11 +96,11 @@ public class Player
 	}
 
 	/* Check for blocking first, if not then generate random */
-	private Coordinate calculateMoveComputerBlocking()
+	private Coordinate calculateMoveComputerBlocking( SquareType[][] gameBoard )
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
 
-		if( checkForBlocking( coord )  )
+		if( checkForBlocking( coord , gameBoard )  )
 			return coord;
 
 		else {
@@ -110,14 +110,14 @@ public class Player
 	}
 
 	/* Check for win first, then for blocking, if not then generate random */
-	private Coordinate calculateMoveComputerSmart()
+	private Coordinate calculateMoveComputerSmart( SquareType[][] gameBoard )
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
 
-		if( checkForWin( coord ) )
+		if( checkForWin( coord, gameBoard ) )
 			return coord;
 		
-		else if( checkForBlocking( coord ) )
+		else if( checkForBlocking( coord, gameBoard ) )
 			return coord;
 
 		else {
@@ -127,11 +127,11 @@ public class Player
 	}
 
 	/* Check for blocking first, if not then lets user pick next move */
-	private Coordinate calculateMoveComputerAidedHuman() throws IOException
+	private Coordinate calculateMoveComputerAidedHuman( SquareType[][] gameBoard ) throws IOException
 	{
 		Coordinate coord = new Coordinate( 0, 0 );
 		
-		if( checkForBlocking( coord )  )
+		if( checkForBlocking( coord, gameBoard )  )
 			return coord;
 
 		else {
@@ -140,19 +140,352 @@ public class Player
 		}
 	}
 
-	private boolean checkForBlocking( Coordinate coord )
+	private boolean checkForBlocking( Coordinate coord, SquareType[][] gameBoard  )
 	{
-		coord.row = 0;
-		coord.col = 0;
+		SquareType squareTypeWin;
 
-		return true;
+		if( this.squareType == SquareType.SquareTypeO )
+			squareTypeWin = SquareType.SquareTypeX;
+		else
+			squareTypeWin = SquareType.SquareTypeO;
+
+		for( int i = 0; i < 3; i++ )
+			for( int j = 0; j < 3; j++ )
+				if( gameBoard[i][j] == SquareType.SquareTypeEmpty ) {
+
+					/* Case 1 */
+					if( i== 0 && j == 0 ) {
+						if( gameBoard[0][1] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][0] == squareTypeWin && gameBoard[2][0] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+					/* Case 2 */
+					if( i== 0 && j == 1 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[1][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}	
+
+					/* Case 3 */
+					if( i== 0 && j == 2 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[0][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][2] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[2][0] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+
+					/* Case 4 */
+					if( i== 1 && j == 0 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[1][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+
+
+					/* Case 5 */
+					if( i== 1 && j == 1 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[0][2] == squareTypeWin && gameBoard[2][0] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][0] == squareTypeWin && gameBoard[1][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[0][1] == squareTypeWin && gameBoard[2][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+					/* Case 6 */
+					if( i== 1 && j == 2 ) {
+						if( gameBoard[1][0] == squareTypeWin && gameBoard[1][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[0][2] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+
+					}
+
+					/* Case 7 */
+					if( i== 2 && j == 0 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[1][0] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[2][1] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+					/* Case 8 */
+					if( i== 2 && j == 1 ) {
+						if( gameBoard[0][1] == squareTypeWin && gameBoard[1][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[2][0] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+					/* Case 9 */
+					if( i== 2 && j == 2 ) {
+						if( gameBoard[0][2] == squareTypeWin && gameBoard[1][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[2][0] == squareTypeWin && gameBoard[2][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[1][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+				}
+			}
+			
+		return false;
 	}
 
-	private boolean checkForWin( Coordinate coord )
+	private boolean checkForWin( Coordinate coord, SquareType[][] gameBoard  )
 	{
-		coord.row = 0;
-		coord.col = 0;
+		SquareType squareTypeWin = this.squareType;
 
-		return true;
+		for( int i = 0; i < 3; i++ )
+			for( int j = 0; j < 3; j++ )
+				if( gameBoard[i][j] == SquareType.SquareTypeEmpty ) {
+
+					/* Case 1 */
+					if( i== 0 && j == 0 ) {
+						if( gameBoard[0][1] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][0] == squareTypeWin && gameBoard[2][0] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+					/* Case 2 */
+					if( i== 0 && j == 1 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[1][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}	
+
+					/* Case 3 */
+					if( i== 0 && j == 2 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[0][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][2] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[2][0] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+
+					/* Case 4 */
+					if( i== 1 && j == 0 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[1][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+
+
+					/* Case 5 */
+					if( i== 1 && j == 1 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[0][2] == squareTypeWin && gameBoard[2][0] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][0] == squareTypeWin && gameBoard[1][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[0][1] == squareTypeWin && gameBoard[2][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+					/* Case 6 */
+					if( i== 1 && j == 2 ) {
+						if( gameBoard[1][0] == squareTypeWin && gameBoard[1][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[0][2] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+
+					}
+
+					/* Case 7 */
+					if( i== 2 && j == 0 ) {
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[1][0] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[1][1] == squareTypeWin && gameBoard[0][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[2][1] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+					/* Case 8 */
+					if( i== 2 && j == 1 ) {
+						if( gameBoard[0][1] == squareTypeWin && gameBoard[1][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[2][0] == squareTypeWin && gameBoard[2][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+					/* Case 9 */
+					if( i== 2 && j == 2 ) {
+						if( gameBoard[0][2] == squareTypeWin && gameBoard[1][2] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[2][0] == squareTypeWin && gameBoard[2][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+						if( gameBoard[0][0] == squareTypeWin && gameBoard[1][1] == squareTypeWin ) {
+							coord.row = i;
+							coord.col = j;
+							return true;
+						}
+					}
+
+				}
+			}
+
+		return false;
 	}
 }
