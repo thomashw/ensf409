@@ -11,6 +11,14 @@ public class Referee
 	{
 		gameBoard = new SquareType[3][3];
 
+		clearGameBoard();
+
+		player1 = null;
+		player2 = null;
+	}
+
+	private void clearGameBoard()
+	{
 		/* Initiate all squares to be empty at the beginning */
 		for( int i = 0; i < SquareType.SquareTypeCount.ordinal(); i++ ) {
 			for( int j = 0; j < SquareType.SquareTypeCount.ordinal(); j++ ) {
@@ -25,9 +33,6 @@ public class Referee
 				gameBoardChars[i][j] = ' ';
 			}
 		}
-
-		player1 = null;
-		player2 = null;
 	}
 
 	public void playGame() throws IOException, PlayersNotInitializedException
@@ -47,41 +52,55 @@ public class Referee
 			return;
 		}
 
-		initiateGame();
+		boolean continuePlaying = true;
+		while( continuePlaying ) {
+			initiateGame();
 
-		/* Make sure both players have been initialized */
-		if( player1 == null || player2 == null )
-			throw new PlayersNotInitializedException( "Player 1 and Player 2 were not initialized correctly." );
+			/* Make sure both players have been initialized */
+			if( player1 == null || player2 == null )
+				throw new PlayersNotInitializedException( "Player 1 and Player 2 were not initialized correctly." );
 
-		/* Play until there is a winner */
-		boolean winner = false;
+			/* Play until there is a winner */
+			boolean winner = false;
 
 
-		/* Draw the blank game board */
-		drawScreen();
-
-		while( winner == false ) {
-
-			/* Receive a move from player 1 */
-			receiveMove( player1 );
-
-			/* Draw the updated game board */
+			/* Draw the blank game board */
 			drawScreen();
 
-			/* Check if player 1 won */
-			winner = checkForWinner();
-			if( winner == true )
-				break;
+			while( winner == false ) {
 
-			/* Receive a move from player 2 */
-			receiveMove( player2 );
+				/* Receive a move from player 1 */
+				receiveMove( player1 );
 
-			/* Draw the updated game board */
-			drawScreen();
+				/* Draw the updated game board */
+				drawScreen();
 
-			/* Check if player 2 won */
-			winner = checkForWinner();
+				/* Check if player 1 won */
+				winner = checkForWinner();
+				if( winner == true )
+					break;
+
+				/* Receive a move from player 2 */
+				receiveMove( player2 );
+
+				/* Draw the updated game board */
+				drawScreen();
+
+				/* Check if player 2 won */
+				winner = checkForWinner();
+			}
+
+			System.out.println( "Would you like to play again?" );
+			System.out.println( "1. Yes" );
+			System.out.println( "2. Quit" );
+
+			str = in.readLine();
+
+			if( Integer.parseInt( str ) == 2 ) {
+				continuePlaying = false;
+			}
 		}
+
 	}
 
 	private void receiveMove( Player player ) throws IOException
@@ -199,6 +218,8 @@ public class Referee
 
 	private void initiateGame() throws IOException, PlayersNotInitializedException
 	{
+		clearGameBoard();
+
 		System.out.print( "\nGreat! Please enter your name: " );
 
 		BufferedReader in = new BufferedReader( new InputStreamReader( System.in ) );
