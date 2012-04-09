@@ -56,22 +56,29 @@ public class Referee
 		/* Play until there is a winner */
 		boolean winner = false;
 
+
+		/* Draw the updated game board */
+		drawScreen();
+
+
 		while( winner == false ) {
-
-			/* Draw the updated game board */
-			drawScreen();
-
+			
 			/* Receive a move from player 1 */
 			receiveMove( player1 );
 
-			/* Check if player 1 won */
-			winner = checkForWinner();
-
 			/* Draw the updated game board */
 			drawScreen();
 
+			/* Check if player 1 won */
+			winner = checkForWinner();
+			if( winner == true )
+				break;
+
 			/* Receive a move from player 2 */
 			receiveMove( player2 );
+
+			/* Draw the updated game board */
+			drawScreen();
 
 			/* Check if player 2 won */
 			winner = checkForWinner();
@@ -105,6 +112,90 @@ public class Referee
 	/* WARNING: NEED TO ACTUALLY CHECK */
 	private boolean checkForWinner()
 	{
+		/* Checking if Player 1 has won */
+
+		if( gameBoardChars[0][0] == 'X' && gameBoardChars[0][1] == 'X' && gameBoardChars[0][2] == 'X' ) {
+			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[1][0] == 'X' && gameBoardChars[1][1] == 'X' && gameBoardChars[1][2] == 'X' ) {
+			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[2][0] == 'X' && gameBoardChars[2][1] == 'X' && gameBoardChars[2][2] == 'X' ) {
+			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[0][0] == 'X' && gameBoardChars[1][0] == 'X' && gameBoardChars[2][0] == 'X' ) {
+			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[0][1] == 'X' && gameBoardChars[1][1] == 'X' && gameBoardChars[2][1] == 'X' ) {
+			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[0][2] == 'X' && gameBoardChars[1][2] == 'X' && gameBoardChars[2][2] == 'X' ) {
+			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[0][0] == 'X' && gameBoardChars[1][1] == 'X' && gameBoardChars[2][2] == 'X' ) {
+			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
+			return true;
+		}	
+
+		if( gameBoardChars[0][2] == 'X' && gameBoardChars[1][1] == 'X' && gameBoardChars[2][0] == 'X' ) {
+			System.out.println( "\n" + player1.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		/* Checking if Player 2 has won */
+
+		if( gameBoardChars[0][0] == 'O' && gameBoardChars[0][1] == 'O' && gameBoardChars[0][2] == 'O' ) {
+			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[1][0] == 'O' && gameBoardChars[1][1] == 'O' && gameBoardChars[1][2] == 'O' ) {
+			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[2][0] == 'O' && gameBoardChars[2][1] == 'O' && gameBoardChars[2][2] == 'O' ) {
+			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[0][0] == 'O' && gameBoardChars[1][0] == 'O' && gameBoardChars[2][0] == 'O' ) {
+			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[0][1] == 'O' && gameBoardChars[1][1] == 'O' && gameBoardChars[2][1] == 'O' ) {
+			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[0][2] == 'O' && gameBoardChars[1][2] == 'O' && gameBoardChars[2][2] == 'O' ) {
+			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
+			return true;
+		}
+
+		if( gameBoardChars[0][0] == 'O' && gameBoardChars[1][1] == 'O' && gameBoardChars[2][2] == 'O' ) {
+			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
+			return true;
+		}	
+
+		if( gameBoardChars[0][2] == 'O' && gameBoardChars[1][1] == 'O' && gameBoardChars[2][0] == 'O' ) {
+			System.out.println( "\n" + player2.getName() + " has won!" + "\n" );
+			return true;
+		}		
+
 		return false;
 	}
 

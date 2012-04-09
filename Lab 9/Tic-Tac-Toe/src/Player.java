@@ -30,6 +30,11 @@ public class Player
 		return squareType;
 	}
 
+	public String getName()
+	{
+		return name;
+	}
+
 	/* Calculate's the move for any type of player (human or computer) */
 	public Coordinate calculateMove() throws IOException
 	{
